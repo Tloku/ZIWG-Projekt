@@ -12,6 +12,12 @@ const Button = ({ backgroundColor }) => {
     >
       Do koszyka!
     </div>
+    //as das dasd asd asd as
+    //as das dasd asd asd as
+    //as das dasd asd asd as
+    //as das dasd asd asd as
+    //as das dasd asd asd as
+    //as das dasd asd asd as
   );
 };
 
