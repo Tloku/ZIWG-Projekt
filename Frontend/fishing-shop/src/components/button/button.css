@@ -1,0 +1,14 @@
+
+.button {
+    display: block;
+    padding: 5px;
+    transition: background-color .3s ease-in;
+}
+
+.button:hover {
+    background-color: #0fda3b;
+}
+
+.button:active {
+    color: aliceblue;
+}

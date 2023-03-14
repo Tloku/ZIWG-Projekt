@@ -1,0 +1,11 @@
+.App {
+  margin: 0 auto;
+  background-color: #efefef;
+  width: 70vw;
+  max-width: 70vw;
+  padding-bottom: 10px;
+}
+
+.page {
+  display: flex;
+}
