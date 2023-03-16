@@ -4,8 +4,14 @@
   width: 70vw;
   max-width: 70vw;
   padding-bottom: 10px;
+  margin-top: 1vh;
 }
 
 .page {
   display: flex;
+}
+
+.navbar-content {
+  display: flex;
+  flex-direction: column;
 }

@@ -6,12 +6,12 @@ const Product = ({ price }) => {
     <div className="container">
       <div className="content">
         <img
+          className="product-img"
           src={require("../../assets/example-fishing-rod.png")} //TODO change that so logo is taken from props
           alt="Wędka"
-          className="productImg"
         />
         <div className="productInfo">
-          <div className="price">{price}</div>
+          <div className="name">Nazwa wędki rsadasdsd</div>
           <div className="price">{price}</div>
           <Button />
         </div>
