@@ -10,5 +10,6 @@
 }
 
 .button:active {
-    color: aliceblue;
+    transition: none;
+    background-color: #fff70f;
 }
