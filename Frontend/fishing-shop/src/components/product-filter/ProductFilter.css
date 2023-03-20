@@ -1,0 +1,34 @@
+
+.product-filter-container {
+    display: flex;
+    width: 13vw;    
+    height: 100%;
+    background-color: #c6daeb;
+    border: 1px solid #0e637d;
+    border-radius: 4px;
+    flex-direction: column;
+}
+
+.product-filter-label {
+    margin: 3px;
+    padding: 5px;
+    background-color: #1595bd;
+    width: calc(100%-3px);
+    text-align: center;
+    color: #efefef;
+    border: 1px solid #0e637d;
+    border-radius: 4px;
+}
+
+.product-filter-price {
+    margin: 3px auto;
+    width: 90%;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #33393d;
+}
+
+.price-filter {
+    font-size: 1.2em;
+    margin-bottom: 1vh;
+}
