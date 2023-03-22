@@ -10,11 +10,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0;
+    height: max-content;
+    align-items: flex-start;
 }
 
 .product-list-page-filter {
     margin-top: 2vh;
     margin-left: 1vw;
     width: 12vw;
-    height: calc(100% - 4vh);
+    height: max-content;
 }
