@@ -1,4 +1,3 @@
-
 .product-filter-container {
     display: flex;
     width: 13vw;    
@@ -20,15 +19,66 @@
     border-radius: 4px;
 }
 
-.product-filter-price {
+.product-filter-price,
+.length-filter,
+.transport-length-filter,
+.weight-filter,
+.max-lure-weight-filter {
     margin: 3px auto;
     width: 90%;
     text-align: center;
-    padding-bottom: 10px;
+}
+
+.border {
+    width: 90%;
+    margin: 10px auto;
     border-bottom: 1px solid #33393d;
 }
 
-.price-filter {
+.price-filter-label,
+.length-filter-label,
+.transport-length-filter-label,
+.weight-filter-label,
+.max-lure-weight-filter-label {
     font-size: 1.2em;
     margin-bottom: 1vh;
+}
+
+.producent-filter-label,
+.discount-filter-label,
+.sections-filter-label {
+    font-size: 1.2em;
+}
+
+.producent-checkboxes,
+.discount-checkboxes,
+.sections-checkboxes {
+    margin-left: 1vw;
+    margin-bottom: 6px;
+}
+
+.producent-checkboxes .producent-checkbox,
+.discount-checkboxes .discount-checkbox,
+.sections-checkboxes .sections-checkbox {
+    margin-right: 6px;
+}
+
+.producent-filter-label,
+.discount-filter-label,
+.sections-filter-label {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+
+.length-range,
+.transport-length-range,
+.prices-range,
+.weight-range,
+.max-lure-weight-range {
+    margin-top: 1vh;
+}
+
+.filter-button {
+    margin: 2vh auto;
 }
