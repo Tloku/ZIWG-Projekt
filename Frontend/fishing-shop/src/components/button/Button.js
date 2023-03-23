@@ -10,7 +10,7 @@ const Button = ({ backgroundColor }) => {
         borderRadius: "8px",
       }}
     >
-      DO KOSZYKA!
+      DO KOSZYKA
     </div>
   );
 };

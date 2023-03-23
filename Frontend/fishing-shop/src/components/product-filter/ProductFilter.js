@@ -155,7 +155,7 @@ const ProductFilter = ({ category }) => {
         </div>
       </div>
       <div className="filter-button">
-        <Button label="Filtruj!" className="p-button-raised p-button-success" />
+        <Button label="Filtruj" className="p-button-raised p-button-success" />
       </div>
     </div>
   );
