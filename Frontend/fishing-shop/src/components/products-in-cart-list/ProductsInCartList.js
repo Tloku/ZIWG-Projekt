@@ -8,7 +8,14 @@ const ProductsInCartList = () => {
         Lista zamówionych produktów
       </div>
       <div className="products-in-cart-list-body">
-        <ProductsInCartListRow />
+        {[2, 3, 1].map((item, index) => {
+          return (
+            <ProductsInCartListRow
+              backgroundColorFlag={index % 2}
+              key={index}
+            />
+          );
+        })}
       </div>
     </div>
   );

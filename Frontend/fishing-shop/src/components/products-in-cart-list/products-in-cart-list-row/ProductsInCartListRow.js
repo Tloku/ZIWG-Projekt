@@ -3,11 +3,16 @@ import { InputNumber } from "primereact/inputnumber";
 import { useState } from "react";
 import { Button } from "primereact/button";
 
-const ProductsInCartListRow = () => {
+const ProductsInCartListRow = ({ backgroundColorFlag }) => {
   const [productQuantity, setProductQuantity] = useState(1);
 
   return (
-    <div className="products-in-cart-list-row-container">
+    <div
+      className="products-in-cart-list-row-container"
+      style={{
+        backgroundColor: backgroundColorFlag ? "#c8d2d8" : "#dae5ea",
+      }}
+    >
       <div className="products-cart-list-row-image">
         <img
           className="product-in-cart-row-img"
