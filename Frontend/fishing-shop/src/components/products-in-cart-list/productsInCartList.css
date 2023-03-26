@@ -1,0 +1,21 @@
+
+
+.products-in-cart-list-container {
+    display: flex;
+    width: 70%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.products-in-cart-list-header {
+    padding: 10px 10px;
+    font-size: 1.1em;
+    width: 100%;
+    background-color: #1f91b3;
+    color: white;
+}
+
+.products-in-cart-list-body {
+    width: 100%;
+}
