@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/navbar/Navbar";
 import Product from "./components/product/Product";
 import Searchbar from "./components/searchbar/Searchbar";
-import adsCarousel from "./components/adsCarousel/adsCarousel";
+import AdsCarousel from "./components/adsCarousel/AdsCarousel";
 import ProductListPage from "./pages/product-list-page/ProductListPage";
 
 function App() {
@@ -24,7 +24,6 @@ function App() {
       <Product price={price} />
       <Product price={price} />
       <Product price={price} />
-      <adsCarousel></adsCarousel>
         {/* <Routes>
           <Route path="/" element={<Product price={price} />}></Route>
           
@@ -33,6 +32,9 @@ function App() {
             element={<ProductListPage />}
           ></Route>
         </Routes> */}
+      </div>
+      <div>
+        <AdsCarousel></AdsCarousel>
       </div>
       
       <div className="footer"></div>
