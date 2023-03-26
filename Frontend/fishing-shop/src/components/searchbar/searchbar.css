@@ -41,12 +41,18 @@
     font-size: 1.15em;
 }
 
+
+
 .searchbar-cart-img,
 .searchbar-account-img {
     background-color: #72a7b7;
     margin-top: 1vh;
     width: 5vw;
     height: 75%;
+    text-align: center;
+    justify-content: center;
+align-items: center;
+display: flex;
 }
 
 
@@ -54,3 +60,4 @@
     width: 100%;
     height: 100%;
 }
+
