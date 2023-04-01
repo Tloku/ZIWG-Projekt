@@ -1,0 +1,101 @@
+
+
+.client-order-data-form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.client-order-data-form-header {
+    width: 65%;
+    height: 6vh;
+    padding: 10px;
+    background-color: #cdba6d;
+    border: 1px solid #a59450;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-order-data-form-header-label {
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.client-order-data-inputs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.client-order-data-input-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 100%;
+}
+
+
+.p-float-label {
+    width: 100% !important;
+}
+
+.client-order-data-phone-number,
+.client-order-data-email,
+.client-order-data-city,
+.client-order-data-name,
+.client-order-data-last-name,
+.client-order-data-postal-code {
+    left: 2.5%;
+}
+
+
+.p-inputtext:invalid {
+    border-color: red;
+}
+
+.client-order-button {
+    margin: auto;
+    padding: 10px 6px;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    width: 80%;
+    min-height: 4vh;
+    border: 1px solid #a59450;
+    background-color: #cdba6d;
+}
+
+.client-order-button:hover {
+    background-color: #ba9c24;
+    cursor: pointer;
+}
+
+.client-order-button:active {
+    background-color: #90791c;
+    border: 1px solid black;
+}
+
+.client-order-button::after {
+    position: relative;
+    left: 30%;
+    font-family: 'Material Icons';
+    content: 'chevron_right';
+    font-size: 1.5em;
+}
+
+.formik-container {
+    width: 70%;
+    margin: auto;
+}

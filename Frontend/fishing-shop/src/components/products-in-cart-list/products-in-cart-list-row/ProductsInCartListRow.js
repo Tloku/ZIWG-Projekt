@@ -1,4 +1,4 @@
-import "../products-in-cart-list-row/productsInCartListRow.css";
+import "../products-in-cart-list-row/ProductsInCartListRow.css";
 import { InputNumber } from "primereact/inputnumber";
 import { useState } from "react";
 import { Button } from "primereact/button";
@@ -26,6 +26,7 @@ const ProductsInCartListRow = ({ backgroundColorFlag }) => {
 
       <div className="product-in-cart-quantity">
         <InputNumber
+          className="product-in-cart-input-number"
           inputId="horizontal"
           value={productQuantity}
           inputStyle={{ width: "3em", textAlign: "center" }}
@@ -37,6 +38,7 @@ const ProductsInCartListRow = ({ backgroundColorFlag }) => {
           decrementButtonIcon="pi pi-minus"
           decrementButtonClassName="p-button-secondary p-button-sm"
           incrementButtonClassName="p-button-secondary p-button-sm"
+          min="0"
         />
       </div>
 
@@ -47,6 +49,7 @@ const ProductsInCartListRow = ({ backgroundColorFlag }) => {
           icon="pi pi-times"
           className="p-button-rounded p-button-danger"
           aria-label="Cancel"
+          size="small"
         />
       </div>
     </div>

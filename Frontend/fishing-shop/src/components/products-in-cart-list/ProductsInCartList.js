@@ -1,4 +1,4 @@
-import "../products-in-cart-list/productsInCartList.css";
+import "../products-in-cart-list/ProductsInCartList.css";
 import ProductsInCartListRow from "./products-in-cart-list-row/ProductsInCartListRow";
 
 const ProductsInCartList = () => {

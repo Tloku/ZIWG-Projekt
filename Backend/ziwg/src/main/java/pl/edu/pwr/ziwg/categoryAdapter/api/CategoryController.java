@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(value ="/api/category")
-public class CategoryController {
+public class    CategoryController {
 
 
     @GetMapping("/random")
