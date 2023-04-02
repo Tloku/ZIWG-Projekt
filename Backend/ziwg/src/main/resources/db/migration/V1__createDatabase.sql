@@ -1,8 +1,8 @@
-CREATE TABLE Category (
+CREATE TABLE category (
                           id   SERIAL NOT NULL,
                           name varchar(255),
                           PRIMARY KEY (id));
-CREATE TABLE Customer (
+CREATE TABLE customer (
                           id           SERIAL NOT NULL,
                           login        varchar(255),
                           phone_number varchar(11),
@@ -12,25 +12,25 @@ CREATE TABLE Customer (
                           country      varchar(255),
                           address      varchar(255),
                           PRIMARY KEY (id));
-CREATE TABLE Image (
+CREATE TABLE image (
                        id         SERIAL NOT NULL,
                        name       varchar(255),
                        image_data bytea,
                        PRIMARY KEY (id));
-CREATE TABLE "order" (
+CREATE TABLE customer_order (
                          id              SERIAL NOT NULL,
-                         orderDate       date,
+                         order_date       date,
                          price           varchar(255),
                          Customerid      int4 NOT NULL,
                          additional_info varchar(255),
                          PRIMARY KEY (id));
-CREATE TABLE Product (
+CREATE TABLE product (
                          id                                 SERIAL NOT NULL,
                          name                               varchar(255),
                          weight                             int4,
                          length                             int4,
                          width                              int4,
-                         fullLength                         int4,
+                         full_length                         int4,
                          lure_max_weight                    int4,
                          price                              varchar(255),
                          type                               varchar(255),
@@ -55,17 +55,17 @@ CREATE TABLE Product (
                          Imageid                            int4 NOT NULL,
                          Categoryid                         int4 NOT NULL,
                          PRIMARY KEY (id));
-CREATE TABLE Product_Quantity (
+CREATE TABLE product_quantity (
                                   id        SERIAL NOT NULL,
                                   quantity  int4,
                                   Productid int4 NOT NULL,
                                   Orderid   int4 NOT NULL,
                                   PRIMARY KEY (id));
-ALTER TABLE Product ADD CONSTRAINT FKProduct563902 FOREIGN KEY (Imageid) REFERENCES Image (id);
-ALTER TABLE Product ADD CONSTRAINT FKProduct367954 FOREIGN KEY (Categoryid) REFERENCES Category (id);
-ALTER TABLE Product_Quantity ADD CONSTRAINT FKProduct_Qu778262 FOREIGN KEY (Productid) REFERENCES Product (id);
-ALTER TABLE "order" ADD CONSTRAINT FKOrder558759 FOREIGN KEY (Customerid) REFERENCES Customer (id);
-ALTER TABLE Product_Quantity ADD CONSTRAINT FKProduct_Qu871616 FOREIGN KEY (Orderid) REFERENCES "order" (id);
+ALTER TABLE product ADD CONSTRAINT FKProduct563902 FOREIGN KEY (Imageid) REFERENCES image (id);
+ALTER TABLE product ADD CONSTRAINT FKProduct367954 FOREIGN KEY (Categoryid) REFERENCES category (id);
+ALTER TABLE product_quantity ADD CONSTRAINT FKProduct_Qu778262 FOREIGN KEY (Productid) REFERENCES product (id);
+ALTER TABLE customer_order ADD CONSTRAINT FKOrder558759 FOREIGN KEY (Customerid) REFERENCES customer (id);
+ALTER TABLE product_quantity ADD CONSTRAINT FKProduct_Qu871616 FOREIGN KEY (Orderid) REFERENCES customer_order (id);
 
 
 -- ALTER TABLE Product DROP CONSTRAINT FKProduct563902;
