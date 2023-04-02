@@ -3,8 +3,6 @@ import { InputText } from "primereact/inputtext";
 import { RadioButton } from "primereact/radiobutton";
 import { Checkbox } from "primereact/checkbox";
 import { useState } from "react";
-import { Formik } from "formik";
-import { Form } from "formik";
 
 const ClientOrderDataForm = () => {
   const [isPrivatePerson, setIsPrivatePerson] = useState(true);

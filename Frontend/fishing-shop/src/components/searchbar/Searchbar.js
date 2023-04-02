@@ -1,4 +1,4 @@
-import "../searchbar/searchbar.css";
+import "../searchbar/Searchbar.css";
 import { InputText } from "primereact/inputtext";
 
 const Searchbar = () => {

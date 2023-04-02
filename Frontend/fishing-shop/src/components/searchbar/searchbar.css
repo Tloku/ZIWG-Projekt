@@ -62,31 +62,34 @@
     .searchbar-content {
         width: 100%;
         height: 10vh;
-        gap: 3vw;
+        justify-content: center;
     }
-
+    
     .searchbar-logo-img {
         width: 20%;
         height: 98%;
     }
-
+    
     .searchbar-input {
+        background-color: #cdba6d;
         display: flex;
-        width: 50%;
+        width: 40%;
         margin: auto;
         margin-top: 2dvh;
     }
 
     .searchbar-cart-img {
-        margin-top: 1vh;
-        width: 5vw;
-        height: 75%;
+        font-size: 3em;
+    }
+    
+    
+    .searchbar-account-img {
+        font-size: 3em;
     }
 
-    .searchbar-account-img {
-        margin-top: 1vh;
-        width: 5vw;
-        height: 75%;
+    .searchbar-text-input .p-inputtext {
+        width: fit-content !important;
+        background-color: #72a7b7;
     }
 }
 

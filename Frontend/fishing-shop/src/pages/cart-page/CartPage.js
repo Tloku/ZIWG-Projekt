@@ -1,4 +1,4 @@
-import "../cart-page/CartPage.css";
+import "../cart-page/Cartpage.css";
 import ProductsInCartList from "../../components/products-in-cart-list/ProductsInCartList";
 import CartPriceSummary from "../../components/cart-price-summary/CartPriceSummary";
 
