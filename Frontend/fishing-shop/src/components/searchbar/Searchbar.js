@@ -16,7 +16,7 @@ const Searchbar = () => {
         <ShoppingCartIcon />
       </div>
       <div className="searchbar-account-img">
-        <AccountCircleIcon />
+        <AccountCircleIcon  />
       </div>
       <div className="searchbar-input">
         <input
