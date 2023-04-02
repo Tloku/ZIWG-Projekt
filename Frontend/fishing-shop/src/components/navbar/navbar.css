@@ -29,6 +29,10 @@ nav li:hover {
     color: #cdba6d;
 }
 
+nav li:active {
+    background-color: #0d3b4a;
+}
+
 @media screen and (min-width: 750px) {
     
     nav ul {
@@ -52,3 +56,5 @@ nav li:hover {
         border-right: 1px solid #816a6a;
     }
 }
+
+

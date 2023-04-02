@@ -10,12 +10,12 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 //icons
 import "primeicons/primeicons.css";
-import LoginPage from "./pages/login-page/LoginPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <LoginPage />
+    <App />
+    {/* <LoginPage /> */}
   </BrowserRouter>
 );
 

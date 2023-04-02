@@ -19,6 +19,7 @@
 }
 
 .product-in-cart-name {
+    width: 30vh;
     margin: auto 0;
 }
 
@@ -30,9 +31,55 @@
 .product-in-cart-price {
     margin: auto 0;
     max-width: 15vh;
+    width: 15vh;
     font-size: 1.15em;
 }
 
 .product-remove-from-cart-button {
     margin: auto 0;
+    width: 6vh;
+}
+
+
+.product-in-cart-input-number {
+    display: flex;
+    align-items: center;
+    width: 10vh;
+}
+
+.product-in-cart-input-number .p-inputnumber-button-up,
+.product-in-cart-input-number .p-inputnumber-button-down {
+    width: 4vh !important; 
+    height: 4vh !important; 
+}
+
+.product-in-cart-input-number .p-inputnumber-button-up {
+    background-color: #098d09 !important;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+
+.product-in-cart-input-number .p-inputnumber-button-up:active {
+    background-color: #076307 !important;
+}
+
+
+.product-in-cart-input-number .p-inputnumber-button-down {
+    background-color: #c51717 !important;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.product-in-cart-input-number .p-inputnumber-button-down:active {
+    background-color: #760707 !important;
+}
+
+.product-in-cart-input-number .p-inputnumber-input {
+    width: 6vh !important;
+    height: 5vh;
+    border-top-left-radius: 20% !important;
+    border-top-right-radius: 20% !important;
+    border-bottom-left-radius: 20% !important;
+    border-bottom-right-radius: 20% !important;
 }

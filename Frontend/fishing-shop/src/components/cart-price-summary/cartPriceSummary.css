@@ -35,14 +35,13 @@
     padding: 6px;
     margin-top: 2vh;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     font-weight: 700;
     width: 70%;
     min-height: 4vh;
     border: 1px solid #a59450;
     background-color: #cdba6d;
-    gap: 4vw;
 }
 
 .go-to-order-page-button:hover {
@@ -56,6 +55,8 @@
 }
 
 .go-to-order-page-button::after {
+    position: relative;
+    left: 30%;
     font-family: 'Material Icons';
     content: 'chevron_right';
     font-size: 1.5em;
