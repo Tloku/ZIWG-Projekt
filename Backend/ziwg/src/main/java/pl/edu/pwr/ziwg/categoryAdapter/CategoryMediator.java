@@ -5,9 +5,4 @@ import pl.edu.pwr.ziwg.categoryAdapter.api.CategoryAdapter;
 
 @Component
 public class CategoryMediator implements CategoryAdapter{
-
-    @Override
-    public void getRandomThing() {
-
-    }
 }

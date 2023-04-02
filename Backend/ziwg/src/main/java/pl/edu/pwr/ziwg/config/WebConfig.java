@@ -1,4 +1,4 @@
-package pl.edu.pwr.ziwg;
+package pl.edu.pwr.ziwg.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
