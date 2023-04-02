@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import Product from "./components/product/Product";
 import Searchbar from "./components/searchbar/Searchbar";
 import ProductListPage from "./pages/product-list-page/ProductListPage";
+import MainPage from "./pages/main-page/MainPage"
 
 function App() {
   let price = "2137.00zł";
@@ -15,9 +16,9 @@ function App() {
         <Searchbar />
         <Navbar />
       </div>
-      <div className="page">
+      <div >
         <Routes>
-          <Route path="/" element={<Product price={price} />}></Route>
+          <Route path="/" element={<MainPage />}></Route>
           <Route
             path="/products/:category"
             element={<ProductListPage />}

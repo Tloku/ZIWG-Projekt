@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';  
 import Carousel from 'react-bootstrap/Carousel';
-import "../adsCarousel/adsCarousel.css";
+import "../adsCarousel/AdsCarousel.css";
 
 function AdsCarousel() {
     return (
