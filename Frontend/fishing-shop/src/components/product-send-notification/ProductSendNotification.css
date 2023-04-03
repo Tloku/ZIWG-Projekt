@@ -1,7 +1,7 @@
 
 .product-send-notification-container {
     width: 90%;
-    height: 25vh;
+    height: 30vh;
     background-color: #15b2ce;
     border: 1px solid #0b6575;
     border-radius: 10px;
@@ -27,8 +27,8 @@
 }
 
 .p-float-label label {
-    color: black;
-    left: 5vw;
+    color: black !important;
+    left: 5vw !important;
 }
 
 .product-send-notification-input {

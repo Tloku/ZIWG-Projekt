@@ -22,7 +22,7 @@ const Searchbar = () => {
           <i className="search-icon material-symbols-outlined">phishing</i>
           <InputText
             className="searchbar-text-input"
-            style={{ width: "35vw" }}
+            style={{ width: "calc(30vw + 10vh)" }}
             type="text"
             placeholder="Wyszukaj produkt..."
           />
