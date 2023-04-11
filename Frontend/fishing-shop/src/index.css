@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 body {
   margin: 0;
@@ -9,5 +10,13 @@ body {
   font-family: 'lato';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ccc;
+  background: rgb(222, 194, 88);
+  background: linear-gradient(
+    324deg,
+    rgba(222, 194, 88, 1) 8%,
+    rgba(226, 213, 163, 1) 44%,
+    rgba(205, 186, 109, 1) 71%,
+    rgba(212, 196, 131, 1) 96%
+  );
+  height: 99dvh;
 }

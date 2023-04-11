@@ -1,29 +1,35 @@
-
-.container {
-    background-color: #ffffff;
-    width: 17vw;
-    min-width: 250px;
-    height: 39.5vh;
-    min-height: 360px;
-    border-radius: 7px;
-    border: 1px solid #6eb6e0;
-    box-shadow: 1px;
-    margin: 1vh;
-    transition: all .2s ease-in-out;
-    
+.product-img:hover {
+    transform: scale(1.04);
+    border: 3px solid #cdba6d;
 }
 
-.container:hover {
+.product-container:hover {
     box-shadow: 0 0 0 3px #296578;
 }
 
-.content {
+.product-container{
+    background-color: #fff;
+    width: 60vw;
+    max-width: 250px;
+    max-height: 360px;
+    height: fit-content;
+    border-radius: 7px;
+    border: 1px solid #6eb6e0;
+    box-shadow: 1px;
+    margin: 1vh;    
+    transition: all .2s ease-in-out;
+}
+
+.product-content {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .product-img {
-    width: 90%;
+    width: 93%;
     aspect-ratio: 6 / 5;
     margin: auto;
     margin-top: 1vh;
@@ -31,36 +37,30 @@
     transition: all .2s ease-in-out;
 }
 
-.product-img:hover {
-    transform: scale(1.04);
-    border: 3px solid #a4da0f;
-}
-
 .productInfo {
-    margin-left: 5%;
+    margin-top: 2vh;
     display: flex;
     width: 90%;
-    justify-content: space-around;
-    align-content: space-between;
-    max-height: 40px;
-    flex-wrap: wrap; 
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .price {
+    text-align: center;
     display: block;
-    font-size: 22px;
+    font-size: 1.2em;
     font-style: oblique;
     text-decoration: underline #009ffb;
-    width: 100%;
-    text-align: center;
     padding: 0 10px;
+    width: 100%;
 }
 
 .name {
     width: 100%;
     text-align: center;
-    
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
     font-style: italic;
     font-weight: 300;
     font-family: "Merriweather";
@@ -68,3 +68,60 @@
     margin-bottom: 1vh;
 }
 
+.product-info .button-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productInfo .button {
+    width: 65%;
+    text-align: center;
+    border: 3px solid #0da719;
+    border-radius: 8px;
+    padding: 5px;
+    transition: background-color .3s ease-in;
+    margin: auto;
+    margin-bottom: 1vh;
+}
+
+.productInfo .button:hover {
+    background-color: #0fda3b;
+}
+
+.productInfo .button:active {
+    transition: none;
+    background-color: #fff70f;
+}
+
+@media screen and (min-width: 400px) {
+    .product-content {
+        flex-direction: row;
+    }
+
+    .productInfo {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .productInfo .button-container {
+        width: 50%;
+    }
+
+    .price { 
+        width: 45%;
+    }
+
+    .productInfo .button {
+        width: 100%;
+    }
+}
+
+
+
+@media screen and (min-width: 750px) { 
+
+
+    
+}
