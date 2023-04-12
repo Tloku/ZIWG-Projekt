@@ -4,12 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar/Navbar";
 import Searchbar from "./components/searchbar/Searchbar";
 import ProductListPage from "./pages/product-list-page/ProductListPage";
-import MainPage from "./pages/main-page/MainPage"
+import MainPage from "./pages/main-page/MainPage";
 import CartPage from "./pages/cart-page/CartPage";
 import OrderPage from "./pages/order-page/OrderPage";
 import ProduuctDetailsPage from "./pages/product-details-page/ProductDetailsPage";
-import MainPage from "./pages/main-page/MainPage";
-
 
 function App() {
   return (
@@ -18,7 +16,7 @@ function App() {
         <Searchbar />
         <Navbar />
       </div>
-      <div >
+      <div>
         <Routes>
           <Route path="/" element={<MainPage />}></Route>
           <Route
