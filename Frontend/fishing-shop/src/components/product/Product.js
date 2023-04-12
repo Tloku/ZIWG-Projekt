@@ -1,8 +1,12 @@
 import "../product/product.css";
+import CompareButton from "../compare-button/CompareButton";
 
 const Product = ({ price }) => {
   return (
     <div className="product-container">
+      <div className="compare-product-button">
+        <CompareButton />
+      </div>
       <div className="product-content">
         <img
           className="product-img"

@@ -72,6 +72,7 @@
 .product-details-add-to-cart {
     margin-top: 1vh;
     display: flex;
+    align-items: center;
     gap: 10vw;
 }
 
@@ -80,7 +81,7 @@
     flex-direction: column;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 700px) {
 
     .product-details-container {
         flex-direction: row;
@@ -114,16 +115,16 @@
         width: 100%;
         align-items: center;
     }
-
-    .product-details-add-to-cart-button {
-        width: 100%;
-        text-align: center;
-    }
 }
 
 @media screen and (min-width: 750px) {
 
-    .product-details-panel {
-        gap: 3vw;
+    .product-details-add-to-cart {
+        margin-left: 2vw;
+        gap: 7vw;
+    }
+
+    .product-details-price {
+        font-size: 2em;
     }
 }
