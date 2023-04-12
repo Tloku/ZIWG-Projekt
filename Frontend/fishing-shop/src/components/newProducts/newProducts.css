@@ -1,0 +1,24 @@
+.new-products-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+}
+.section-title {
+    font-size:xx-large;
+    margin-left: 10px;
+}
+
+.new-products-wrapper::-webkit-scrollbar {
+    width: 15px
+}
+ 
+.new-products-wrapper::-webkit-scrollbar-track {
+    background: #a8a7a7;
+}
+ 
+.new-products-wrapper::-webkit-scrollbar-thumb {
+    background-color: #cac8cb;
+    border-radius: 50px;
+    border: 3px none #ffffff;;
+}
