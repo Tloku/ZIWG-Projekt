@@ -1,6 +1,7 @@
 import "../product-list-page/ProductListPage.css";
 import ProductFilter from "../../components/product-filter/ProductFilter";
 import Product from "../../components/product/Product";
+import ShowComparedProductsButton from "../../components/show-compared-products-button/ShowComparedProductsButton";
 
 const ProductListPage = ({ category }) => {
   return (
@@ -14,6 +15,9 @@ const ProductListPage = ({ category }) => {
             <Product price={(item * 1000).toString() + "zł"} key={index} />
           );
         })}
+      </div>
+      <div className="compared-products-button">
+        <ShowComparedProductsButton />
       </div>
     </div>
   );

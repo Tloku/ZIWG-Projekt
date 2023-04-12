@@ -118,10 +118,8 @@
     }
 }
 
-
-
-@media screen and (min-width: 750px) { 
-
-
-    
+.compare-product-button {
+    position: absolute;
+    z-index: 1000;
+    transform: translateX(237px) translateY(-8px);
 }

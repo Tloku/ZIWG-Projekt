@@ -10,12 +10,10 @@
 }
 
 .page {
-  
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 25px;
-  
 }
 
 .navbar-content {

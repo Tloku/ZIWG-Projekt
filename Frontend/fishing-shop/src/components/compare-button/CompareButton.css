@@ -1,0 +1,24 @@
+.compare-button-container {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: red;
+    border: 1px solid rgb(128, 68, 68);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Material Icons';
+    color: white;
+    font-weight: 900;
+    user-select: none;
+}
+
+.compare-button-container:hover {
+    background-color: greenyellow;
+    cursor: pointer;
+}
+
+.compare-button-container:active {
+    background-color: rgb(105, 168, 11);
+    color: rgb(209, 170, 170);
+}
