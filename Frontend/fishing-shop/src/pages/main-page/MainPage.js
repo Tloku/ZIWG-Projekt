@@ -3,6 +3,7 @@ import Product from "../../components/product/Product";
 import AdsCarousel from "../../components/adsCarousel/adsCarousel";
 import NewProducts from "../../components/newProducts/NewProducts";
 import BestSeller from "../../components/bestSellser/BestSeller";
+import Topics from "../../components/topics/Topics";
 
 function MainPage() {
   let price = "2137.00zł";
@@ -21,6 +22,10 @@ function MainPage() {
       <div>
         <NewProducts />
       </div>
+      <div>
+        <Topics />
+      </div>
+      
     </div>
   );
 }
