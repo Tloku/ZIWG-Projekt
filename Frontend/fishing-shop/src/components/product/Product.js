@@ -3,7 +3,7 @@ import Button from "../button/Button";
 
 const Product = ({ price }) => {
   return (
-    <div className="container">
+    <div className="product-container">
       <div className="content">
         <img
           className="product-img"
