@@ -12,7 +12,7 @@ function BestSeller() {
     <div >
         <p className="section-title">Bestsellers</p>
         <div className="new-products-wrapper">
-        <Product price={price} />       
+        <Product price={price} />  
         </div>
         
         

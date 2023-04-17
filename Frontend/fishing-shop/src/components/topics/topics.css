@@ -1,0 +1,49 @@
+.card{
+    width: 12rem;
+    margin:7.5px;
+    flex-basis: 45%;
+}
+.section-title {
+    font-size:xx-large;
+    margin-left: 10px;
+}
+
+.card-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.button-container {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    width: 100%;
+    text-align: center;
+    border: 3px solid #0da719;
+    border-radius: 8px;
+    padding: 5px;
+    transition: background-color .3s ease-in;
+    margin: auto;
+    margin-bottom: 1vh;
+}
+
+.button:hover {
+    background-color: #0fda3b;
+    cursor: pointer;
+}
+
+.button:active {
+    transition: none;
+    background-color: #fff70f;
+}
+@media screen and (max-width: 500px) {
+    .card{
+        flex-basis: 100%;
+    }
+}
+
