@@ -7,6 +7,7 @@
     box-shadow: 0 0 0 3px #296578;
 }
 
+
 .product-container{
     background-color: #fff;
     width: 60vw;
@@ -18,6 +19,11 @@
     box-shadow: 1px;
     margin: 1vh;    
     transition: all .2s ease-in-out;
+}
+
+
+.product-container:hover {
+    box-shadow: 0 0 0 3px #296578;
 }
 
 .product-content {
