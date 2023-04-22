@@ -1,0 +1,44 @@
+.show-compared-products-button-container { 
+    width: 65px;
+    height: 65px;
+    background-color: #f6f1f1;
+    border: 1px solid #898686;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.show-compared-products-button-container:hover {
+    background-color: #969891;
+    cursor: pointer;
+}
+
+.show-compared-products-button-container:active {
+    background-color: #cbe48b;
+}
+
+.show-compared-products-button-image {
+    font-family: 'Material Icons';
+    color: rgb(77, 77, 77);
+    font-size: 3em;
+}
+
+.show-compared-products-quantity {
+    position: absolute;
+    z-index: 1000;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border: 1px solid black;
+    color: white;
+    font-size: 1.1em;
+    text-align: center;
+    padding-bottom: 1px;
+    transform: translateX(22px) translateY(-25px);
+}

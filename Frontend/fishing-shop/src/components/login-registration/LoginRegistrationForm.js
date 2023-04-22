@@ -41,7 +41,7 @@ function OffCanvasExample({ name, ...props }) {
   return (
     <div>
       <div className="account-img" onClick={handleShow}>
-        <AccountCircleIcon />
+        <span className="material-symbols-outlined">person</span>
       </div>
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton>

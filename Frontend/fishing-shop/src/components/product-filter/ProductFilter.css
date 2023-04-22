@@ -82,3 +82,19 @@
 .filter-button {
     margin: 2vh auto;
 }
+
+.p-slider-handle,
+.p-slider-range {
+    background-color: #1595bd !important;
+    border-color: #cdba6d !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+    background-color: #1595bd !important;
+    border-color: #cdba6d !important;
+}
+
+.p-checkbox .p-checkbox-box.p-focus,
+.p-checkbox .p-checkbox-box:hover {
+    border-color: #cdba6d !important;   
+}
