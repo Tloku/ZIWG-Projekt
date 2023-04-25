@@ -7,6 +7,7 @@ import pl.edu.pwr.ziwg.dto.product.GetProductDetailsRequest;
 import pl.edu.pwr.ziwg.dto.product.GetProductDetailsResponse;
 import pl.edu.pwr.ziwg.dto.product.GetProductDisplayInfoRequest;
 import pl.edu.pwr.ziwg.dto.product.GetProductDisplayInfoResponse;
+import pl.edu.pwr.ziwg.exceptions.NullIdException;
 import pl.edu.pwr.ziwg.logic.category.exceptions.CategoryNullException;
 import pl.edu.pwr.ziwg.logic.product.api.ProductAdapter;
 import pl.edu.pwr.ziwg.logic.product.exceptions.GetProductRequestNullException;
@@ -33,7 +34,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product_details")
-    public ResponseEntity<GetProductDetailsResponse> getProductDetails(@RequestBody GetProductDetailsRequest request) throws GetProductRequestNullException {
+    public ResponseEntity<GetProductDetailsResponse> getProductDetails(@RequestBody GetProductDetailsRequest request) throws GetProductRequestNullException, NullIdException {
         if (request == null) {
             throw new GetProductRequestNullException();
         }

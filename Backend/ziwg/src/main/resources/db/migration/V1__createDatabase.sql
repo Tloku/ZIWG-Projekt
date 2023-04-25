@@ -6,7 +6,7 @@ CREATE TABLE customer (
                           id           SERIAL NOT NULL,
                           login        varchar(255),
                           phone_number varchar(11),
-                          email        varchar(255),
+                          email        varchar(255) UNIQUE,
                           password     varchar(255),
                           city         varchar(255),
                           country      varchar(255),
