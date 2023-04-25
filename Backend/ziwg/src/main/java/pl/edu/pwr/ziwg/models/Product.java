@@ -22,7 +22,7 @@ public class Product {
     private Boolean isOnDiscount;
     private Float discount;
     private Integer numberOfBearings;
-    private Integer reelRatio;
+    private String reelRatio;
     private Integer spoolCapacity;
     private Integer lineLength;
     private Integer lineDiameter;
@@ -37,16 +37,16 @@ public class Product {
     private Integer height;
     private Integer landingNetLengthAfterUnfolding;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "Imageid")
-    private Image image;
+    private ProductImage productImage;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Categoryid")
     private Category category;
 
 
-    public Product(Long id, String name, Integer weight, Integer length, Integer width, Integer fullLength, Integer lureMaxWeight, String price, String type, Integer numberOfSections, Boolean isOnDiscount, Float discount, Integer numberOfBearings, Integer reelRatio, Integer spoolCapacity, Integer lineLength, Integer lineDiameter, Integer lineDurability, String floatType, Integer hookSize, String hookType, Integer numberOfHooksInPackage, String manufacturer, String baitPurpose, Integer landingNetDepth, Integer height, Integer landingNetLengthAfterUnfolding) {
+    public Product(Long id, String name, Integer weight, Integer length, Integer width, Integer fullLength, Integer lureMaxWeight, String price, String type, Integer numberOfSections, Boolean isOnDiscount, Float discount, Integer numberOfBearings, String reelRatio, Integer spoolCapacity, Integer lineLength, Integer lineDiameter, Integer lineDurability, String floatType, Integer hookSize, String hookType, Integer numberOfHooksInPackage, String manufacturer, String baitPurpose, Integer landingNetDepth, Integer height, Integer landingNetLengthAfterUnfolding) {
         this.id = id;
         this.name = name;
         this.weight = weight;
@@ -182,11 +182,11 @@ public class Product {
         this.numberOfBearings = numberOfBearings;
     }
 
-    public Integer getReelRatio() {
+    public String getReelRatio() {
         return reelRatio;
     }
 
-    public void setReelRatio(Integer reelRatio) {
+    public void setReelRatio(String reelRatio) {
         this.reelRatio = reelRatio;
     }
 
@@ -294,12 +294,12 @@ public class Product {
         this.landingNetLengthAfterUnfolding = landingNetLengthAfterUnfolding;
     }
 
-    public Image getImage() {
-        return image;
+    public ProductImage getImage() {
+        return productImage;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImage(ProductImage productImage) {
+        this.productImage = productImage;
     }
 
     public Category getCategory() {

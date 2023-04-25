@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.edu.pwr.ziwg.dto.customer.CreateCustomerOrderRequest;
 import pl.edu.pwr.ziwg.dto.customer.CreateCustomerOrderResponse;
+import pl.edu.pwr.ziwg.logic.customer.exceptions.CustomerNotFoundException;
 import pl.edu.pwr.ziwg.logic.customerOrder.CustomerOrderRepository;
 import pl.edu.pwr.ziwg.logic.customerOrder.CustomerOrderTranslator;
 import pl.edu.pwr.ziwg.logic.customerOrder.api.CustomerOrderAdapter;
@@ -24,7 +25,7 @@ public class CustomerOrderController {
 
 
     @PostMapping(value = "/create")
-    public ResponseEntity<CreateCustomerOrderResponse> createCustomerOrder(CreateCustomerOrderRequest request) throws CreateCustomerOrderRequestNullException {
+    public ResponseEntity<CreateCustomerOrderResponse> createCustomerOrder(CreateCustomerOrderRequest request) throws CreateCustomerOrderRequestNullException, CustomerNotFoundException {
         if (request == null) {
             throw new CreateCustomerOrderRequestNullException();
         }

@@ -12,7 +12,7 @@ CREATE TABLE customer (
                           country      varchar(255),
                           address      varchar(255),
                           PRIMARY KEY (id));
-CREATE TABLE image (
+CREATE TABLE product_image (
                        id         SERIAL NOT NULL,
                        name       varchar(255),
                        image_data bytea,
@@ -38,7 +38,7 @@ CREATE TABLE product (
                          is_on_discount                     boolean,
                          discount                           int4,
                          number_of_bearings                 int4,
-                         reel_ratio                         int4,
+                         reel_ratio                         varchar(255),
                          spool_capacity                     int4,
                          line_length                        int4,
                          line_diameter                      int4,
@@ -61,7 +61,7 @@ CREATE TABLE product_quantity (
                                   Productid int4 NOT NULL,
                                   Orderid   int4 NOT NULL,
                                   PRIMARY KEY (id));
-ALTER TABLE product ADD CONSTRAINT FKProduct563902 FOREIGN KEY (Imageid) REFERENCES image (id);
+ALTER TABLE product ADD CONSTRAINT FKProduct563902 FOREIGN KEY (Imageid) REFERENCES product_image (id);
 ALTER TABLE product ADD CONSTRAINT FKProduct367954 FOREIGN KEY (Categoryid) REFERENCES category (id);
 ALTER TABLE product_quantity ADD CONSTRAINT FKProduct_Qu778262 FOREIGN KEY (Productid) REFERENCES product (id);
 ALTER TABLE customer_order ADD CONSTRAINT FKOrder558759 FOREIGN KEY (Customerid) REFERENCES customer (id);
