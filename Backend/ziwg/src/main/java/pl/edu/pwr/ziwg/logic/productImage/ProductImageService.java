@@ -13,12 +13,32 @@ import java.util.List;
 @Service
 public class ProductImageService {
 
-    private List<String> pathNames = List.of(
-            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png"
+    private final List<String> pathNames = List.of(
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
+//            "D:\\Studia\\Semestr 8\\Zastosowanie informatyki w gospodarce\\Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png"
     );
 
 
@@ -57,5 +77,4 @@ public class ProductImageService {
         productImage.setImageData(data);
         productImageRepository.save(productImage);
     }
-
 }

@@ -1,20 +1,24 @@
 package pl.edu.pwr.ziwg.dto.product;
 
-import pl.edu.pwr.ziwg.models.Category;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetProductDisplayInfoRequest {
 
-    private Category category;
+    @JsonProperty("categoryName")
+    private String categoryName;
 
-    public Category getCategory() {
-        return category;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public GetProductDisplayInfoRequest() {
     }
 
-    public GetProductDisplayInfoRequest(Category category) {
-        this.category = category;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public GetProductDisplayInfoRequest(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

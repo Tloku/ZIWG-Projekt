@@ -28,7 +28,7 @@ public class Product {
     private Integer lineDiameter;
     private Integer lineDurability;
     private String floatType;
-    private Integer hookSize;
+    private String hookSize;
     private String hookType;
     private Integer numberOfHooksInPackage;
     private String manufacturer;
@@ -46,7 +46,7 @@ public class Product {
     private Category category;
 
 
-    public Product(Long id, String name, Integer weight, Integer length, Integer width, Integer fullLength, Integer lureMaxWeight, String price, String type, Integer numberOfSections, Boolean isOnDiscount, Float discount, Integer numberOfBearings, String reelRatio, Integer spoolCapacity, Integer lineLength, Integer lineDiameter, Integer lineDurability, String floatType, Integer hookSize, String hookType, Integer numberOfHooksInPackage, String manufacturer, String baitPurpose, Integer landingNetDepth, Integer height, Integer landingNetLengthAfterUnfolding) {
+    public Product(Long id, String name, Integer weight, Integer length, Integer width, Integer fullLength, Integer lureMaxWeight, String price, String type, Integer numberOfSections, Boolean isOnDiscount, Float discount, Integer numberOfBearings, String reelRatio, Integer spoolCapacity, Integer lineLength, Integer lineDiameter, Integer lineDurability, String floatType, String hookSize, String hookType, Integer numberOfHooksInPackage, String manufacturer, String baitPurpose, Integer landingNetDepth, Integer height, Integer landingNetLengthAfterUnfolding) {
         this.id = id;
         this.name = name;
         this.weight = weight;
@@ -230,11 +230,11 @@ public class Product {
         this.floatType = floatType;
     }
 
-    public Integer getHookSize() {
+    public String getHookSize() {
         return hookSize;
     }
 
-    public void setHookSize(Integer hookSize) {
+    public void setHookSize(String hookSize) {
         this.hookSize = hookSize;
     }
 

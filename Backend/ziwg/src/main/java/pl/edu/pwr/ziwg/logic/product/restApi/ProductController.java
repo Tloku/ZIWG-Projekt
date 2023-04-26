@@ -24,11 +24,12 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product_display")
+    @ResponseBody
     public ResponseEntity<GetProductDisplayInfoResponse> getProductDisplayInfo(@RequestBody GetProductDisplayInfoRequest request) throws GetProductRequestNullException, CategoryNullException {
         if (request == null) {
             throw new GetProductRequestNullException();
         }
-        var productsDisplayInfo = productAdapter.getProductsDisplayInfo(request.getCategory());
+        var productsDisplayInfo = productAdapter.getProductsDisplayInfo(request.getCategoryName());
         var resp = new GetProductDisplayInfoResponse(productsDisplayInfo);
         return ResponseEntity.ok(resp);
     }

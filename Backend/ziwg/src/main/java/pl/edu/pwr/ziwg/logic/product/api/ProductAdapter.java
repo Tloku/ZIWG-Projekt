@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 public interface ProductAdapter {
-    List<ProductDisplayInformation> getProductsDisplayInfo(Category category) throws CategoryNullException;
+    List<ProductDisplayInformation> getProductsDisplayInfo(String categoryName) throws CategoryNullException;
 
     Product getProductDetails(Long id) throws NullIdException;
 }

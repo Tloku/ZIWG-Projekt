@@ -44,7 +44,7 @@ CREATE TABLE product (
                          line_diameter                      int4,
                          line_durability                    int4,
                          float_type                         varchar(255),
-                         hook_size                          int4,
+                         hook_size                          varchar(255),
                          hook_type                          varchar(255),
                          number_of_hooks_in_package         int4,
                          manufacturer                       varchar(255),

@@ -6,7 +6,6 @@ import pl.edu.pwr.ziwg.dto.product.ProductDisplayInformation;
 import pl.edu.pwr.ziwg.exceptions.NullIdException;
 import pl.edu.pwr.ziwg.logic.category.exceptions.CategoryNullException;
 import pl.edu.pwr.ziwg.logic.product.api.ProductAdapter;
-import pl.edu.pwr.ziwg.models.Category;
 import pl.edu.pwr.ziwg.models.Product;
 
 import java.util.List;
@@ -22,11 +21,11 @@ class ProductMediator implements ProductAdapter {
     }
 
     @Override
-    public List<ProductDisplayInformation> getProductsDisplayInfo(Category category) throws CategoryNullException {
-        if (category == null) {
+    public List<ProductDisplayInformation> getProductsDisplayInfo(String categoryName) throws CategoryNullException {
+        if (categoryName == null) {
             throw new CategoryNullException();
         }
-        var products = productRepository.getProductsByCategory(category);
+        var products = productRepository.getProductsByCategoryName(categoryName);
         return productTranslator.toDisplayInfo(products);
     }
 
