@@ -1,10 +1,22 @@
 import "../products-in-cart-list-row/ProductsInCartListRow.css";
 import { InputNumber } from "primereact/inputnumber";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "primereact/button";
+import { useDispatch } from "react-redux";
+import { removeProduct, updateProduct } from "../../../stores/ProductReducer";
 
-const ProductsInCartListRow = ({ backgroundColorFlag }) => {
-  const [productQuantity, setProductQuantity] = useState(1);
+const ProductsInCartListRow = ({ product, backgroundColorFlag }) => {
+  const dispatch = useDispatch();
+  const { id, name, price, image } = product;
+
+  const dispatchRemove = (id) => {
+    dispatch(removeProduct(id));
+  };
+
+  const setQuantity = (quantity) => {
+    product.quantity = quantity;
+    dispatch(updateProduct(product));
+  };
 
   return (
     <div
@@ -16,21 +28,19 @@ const ProductsInCartListRow = ({ backgroundColorFlag }) => {
       <div className="products-cart-list-row-image">
         <img
           className="product-in-cart-row-img"
-          src={require("../../../assets/example-fishing-rod.png")} //TODO change that so logo is taken from props
-          alt="Wędka"
+          src={`data:image/jpeg;base64,${image && image.imageData}`}
+          alt={image && image.name}
         />
       </div>
-      <div className="product-in-cart-name">
-        Przykladowa wędka v1.2 Turbo kox
-      </div>
+      <div className="product-in-cart-name">{name}</div>
 
       <div className="product-in-cart-quantity">
         <InputNumber
           className="product-in-cart-input-number"
           inputId="horizontal"
-          value={productQuantity}
+          value={product.quantity}
           inputStyle={{ width: "3em", textAlign: "center" }}
-          onValueChange={(e) => setProductQuantity(e.value)}
+          onValueChange={(e) => setQuantity(e.value)}
           showButtons
           buttonLayout="horizontal"
           step={1}
@@ -42,7 +52,7 @@ const ProductsInCartListRow = ({ backgroundColorFlag }) => {
         />
       </div>
 
-      <div className="product-in-cart-price">2137.00zl</div>
+      <div className="product-in-cart-price">{price}</div>
 
       <div className="product-remove-from-cart-button">
         <Button
@@ -50,6 +60,7 @@ const ProductsInCartListRow = ({ backgroundColorFlag }) => {
           className="p-button-rounded p-button-danger"
           aria-label="Cancel"
           size="small"
+          onClick={() => dispatchRemove(id)}
         />
       </div>
     </div>

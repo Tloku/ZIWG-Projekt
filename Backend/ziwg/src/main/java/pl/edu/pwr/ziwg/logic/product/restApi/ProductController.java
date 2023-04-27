@@ -43,4 +43,7 @@ public class ProductController {
         var resp = new GetProductDetailsResponse(product);
         return ResponseEntity.ok(resp);
     }
+
+    public ResponseEntity<>
+
 }
