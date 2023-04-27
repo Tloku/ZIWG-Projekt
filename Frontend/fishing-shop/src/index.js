@@ -10,13 +10,17 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 //icons
 import "primeicons/primeicons.css";
+import { Provider } from "react-redux";
+import store from "./stores/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <App />
-    {/* <LoginPage /> */}
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+      {/* <LoginPage /> */}
+    </BrowserRouter>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
