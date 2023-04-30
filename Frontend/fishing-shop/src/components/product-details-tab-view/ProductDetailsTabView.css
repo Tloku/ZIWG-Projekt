@@ -34,7 +34,6 @@
     background-color: #efefef !important;
 }
 
-.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-    background-color: red !important;
-    border-color: red !important;
+.p-tabview .p-tabview-nav .p-tabview-ink-bar {
+    background-color: #0e637d !important;
 }

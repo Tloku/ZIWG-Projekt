@@ -7,17 +7,25 @@
     box-shadow: 0 0 0 3px #296578;
 }
 
+
 .product-container{
     background-color: #fff;
     width: 60vw;
     max-width: 250px;
     max-height: 360px;
+    min-width: 240px;
+    min-height: 340px;
     height: fit-content;
     border-radius: 7px;
     border: 1px solid #6eb6e0;
     box-shadow: 1px;
     margin: 1vh;    
     transition: all .2s ease-in-out;
+}
+
+
+.product-container:hover {
+    box-shadow: 0 0 0 3px #296578;
 }
 
 .product-content {
@@ -41,7 +49,7 @@
     margin-top: 2vh;
     display: flex;
     width: 90%;
-    justify-content: center;
+    justify-content: flex-start;
     align-content: center;
     flex-direction: column;
     gap: 10px;
@@ -64,7 +72,6 @@
     font-style: italic;
     font-weight: 300;
     font-family: "Merriweather";
-    margin-top: 2vh;
     margin-bottom: 1vh;
 }
 
@@ -80,7 +87,7 @@
     text-align: center;
     border: 3px solid #0da719;
     border-radius: 8px;
-    padding: 5px;
+    padding-bottom: 5px;
     transition: background-color .3s ease-in;
     margin: auto;
     margin-bottom: 1vh;
@@ -93,6 +100,14 @@
 .productInfo .button:active {
     transition: none;
     background-color: #fff70f;
+}
+
+.productInfo .name {
+    max-height: 30px;
+}
+
+.productInfo .price::after {
+    content: "zł"
 }
 
 @media screen and (min-width: 400px) {

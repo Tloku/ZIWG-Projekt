@@ -17,11 +17,13 @@ public class Customer {
     private String city;
     private String country;
     private String address;
+    private String name;
+    private String lastName;
 
     @OneToMany(mappedBy = "customer")
     private List<CustomerOrder> customerOrders;
 
-    public Customer(Long id, String login, String phoneNumber, String email, String password, String city, String country, String address, List<CustomerOrder> customerOrders) {
+    public Customer(Long id, String login, String phoneNumber, String email, String password, String city, String country, String address, String name, String lastName) {
         this.id = id;
         this.login = login;
         this.phoneNumber = phoneNumber;
@@ -30,10 +32,27 @@ public class Customer {
         this.city = city;
         this.country = country;
         this.address = address;
-        this.customerOrders = customerOrders;
+        this.name = name;
+        this.lastName = lastName;
     }
 
     public Customer() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Long getId() {

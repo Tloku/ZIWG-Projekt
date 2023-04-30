@@ -12,7 +12,7 @@ function NewProducts() {
     <div >
         <p className="section-title">New Products</p>
         <div className="new-products-wrapper">
-        <Product price={price} />      
+        <Product price={price} />     
         </div>
         
         

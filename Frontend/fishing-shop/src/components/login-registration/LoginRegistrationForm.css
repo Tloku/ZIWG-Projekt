@@ -1,0 +1,46 @@
+.form-control:focus{
+    box-shadow: 0 0 0 3px #296578;
+}
+.account-img{
+    width:100%;
+    height:100%;
+    cursor: pointer;    
+}
+
+.account-img:hover{
+    cursor: pointer;
+    background-color: #177f9f;
+    color: #cdba6d;
+    transition: all .3s ease-in-out;  
+}
+
+.btn-close:focus{
+    box-shadow: 0 0 0 3px #296578;
+}
+
+.tab{
+    display: inline-block;
+    background-color: #0e637d;
+    color:white;
+    padding: 10px 15px;
+    border-radius: 15%;
+    margin-left: 15px;
+
+}
+.tab:hover {
+    cursor: pointer;
+    background-color: #177f9f;
+    color: #cdba6d;
+    transition: all .3s ease-in-out;
+}
+
+.form-button{
+    background-color: #0e637d;
+    border-color: #0e637d;
+}
+.form-button:hover{
+    border-color: #0e637d;
+    background-color: #177f9f;
+    color: #cdba6d;
+    transition: all .3s ease-in-out;
+}

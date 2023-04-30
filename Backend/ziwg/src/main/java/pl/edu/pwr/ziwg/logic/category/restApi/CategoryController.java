@@ -1,4 +1,4 @@
-package pl.edu.pwr.ziwg.categoryAdapter.api;
+package pl.edu.pwr.ziwg.logic.category.restApi;
 
 
 import org.springframework.http.HttpStatus;
@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "*"})
 @RequestMapping(value ="/api/category")
-public class    CategoryController {
-
+public class CategoryController {
 
     @GetMapping("/random")
     @ResponseStatus(HttpStatus.OK)
