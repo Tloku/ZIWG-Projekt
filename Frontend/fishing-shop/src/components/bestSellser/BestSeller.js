@@ -14,8 +14,6 @@ function BestSeller() {
         <div className="new-products-wrapper">
         <Product price={price} />       
         </div>
-        
-        
     </div>
   );
 }

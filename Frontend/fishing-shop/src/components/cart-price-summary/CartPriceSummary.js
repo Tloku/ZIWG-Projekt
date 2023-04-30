@@ -1,5 +1,5 @@
 import "../cart-price-summary/cartPriceSummary.css";
-
+import { Link } from "react-router-dom";
 const CartPriceSummary = ({ price, shippment }) => {
   return (
     <div className="cart-price-summary-container">
@@ -18,7 +18,9 @@ const CartPriceSummary = ({ price, shippment }) => {
           <div className="cart-summary-amount">100017</div>
         </div>
       </div>
+      <Link style={{textDecoration: 'none', color: "black"}}  to= "/order-finalization">
       <div className="go-to-order-page-button">ZAMÓW</div>
+      </Link>
     </div>
   );
 };
