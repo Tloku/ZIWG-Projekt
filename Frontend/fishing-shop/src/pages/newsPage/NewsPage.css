@@ -1,0 +1,18 @@
+.news-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+  }
+  
+  .news-item h2 {
+    margin-top: 0;
+  }
+  
+  .news-date {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+  .news-item p:last-child {
+    margin-bottom: 0;
+  }

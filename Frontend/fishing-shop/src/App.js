@@ -9,6 +9,12 @@ import CartPage from "./pages/cart-page/CartPage";
 import OrderPage from "./pages/order-page/OrderPage";
 import ProduuctDetailsPage from "./pages/product-details-page/ProductDetailsPage";
 import Constructor from "./components/constructor/Constructor";
+import NotFound from "./pages/NotFound";
+import UserProfilePage from "./pages/user-page/UserProfilPage";
+import ProductCategoryPage from "./pages/product-category/ProductCategoryPage";
+import HelpPage from "./pages/help-page/HelpPage";
+import NewsPage from "./pages/newsPage/NewsPage";
+
 function App() {
   return (
     <div className="App">
@@ -29,6 +35,13 @@ function App() {
           <Route
             path="/product-details/:id"
             element={<ProduuctDetailsPage />}
+          ></Route>
+          <Route path="/user-profil" element={<UserProfilePage/>}></Route>
+          <Route path="/products" element={<ProductCategoryPage/>}></Route>
+          <Route path="/help" element={<HelpPage/>}> </Route>
+          <Route path="/news" element={<NewsPage/>}> </Route>
+          <Route path="*"
+            element={<NotFound/>}
           ></Route>
         </Routes>
       </div>

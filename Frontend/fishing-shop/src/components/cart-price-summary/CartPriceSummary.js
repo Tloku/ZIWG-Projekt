@@ -1,5 +1,5 @@
 import "../cart-price-summary/cartPriceSummary.css";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";import { useEffect, useState } from "react";
 
 const CartPriceSummary = ({ products }) => {
   const shippment = 17;
@@ -32,7 +32,9 @@ const CartPriceSummary = ({ products }) => {
           <div className="cart-summary-amount">{wholePrice + shippment}</div>
         </div>
       </div>
+      <Link style={{textDecoration: 'none', color: "black"}}  to= "/order-finalization">
       <div className="go-to-order-page-button">ZAMÓW</div>
+      </Link>
     </div>
   );
 };
