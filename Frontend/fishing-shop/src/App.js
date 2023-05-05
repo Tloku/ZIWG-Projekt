@@ -8,7 +8,7 @@ import MainPage from "./pages/main-page/MainPage";
 import CartPage from "./pages/cart-page/CartPage";
 import OrderPage from "./pages/order-page/OrderPage";
 import ProduuctDetailsPage from "./pages/product-details-page/ProductDetailsPage";
-
+import Constructor from "./components/constructor/Constructor";
 function App() {
   return (
     <div className="App">
@@ -25,6 +25,7 @@ function App() {
           ></Route>
           <Route path="/cart" element={<CartPage />}></Route>
           <Route path="/order-finalization" element={<OrderPage />}></Route>
+          <Route path="/constructor" element={<Constructor />}></Route>
           <Route
             path="/product-details/:id"
             element={<ProduuctDetailsPage />}
