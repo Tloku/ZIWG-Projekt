@@ -37,6 +37,11 @@ class ProductMediator implements ProductAdapter {
         return productRepository.getProductById(id);
     }
 
+    @Override
+    public List<Product> getAll() {
+        return productRepository.findAll();
+    }
+
 }
 
 

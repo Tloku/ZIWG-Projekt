@@ -11,6 +11,9 @@ import pl.edu.pwr.ziwg.exceptions.NullIdException;
 import pl.edu.pwr.ziwg.logic.category.exceptions.CategoryNullException;
 import pl.edu.pwr.ziwg.logic.product.api.ProductAdapter;
 import pl.edu.pwr.ziwg.logic.product.exceptions.GetProductRequestNullException;
+import pl.edu.pwr.ziwg.models.Product;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000", "*"})
@@ -44,6 +47,9 @@ public class ProductController {
         return ResponseEntity.ok(resp);
     }
 
-    public ResponseEntity<>
+    @GetMapping("/all")
+    public ResponseEntity<List<Product>> getAll() {
+        return ResponseEntity.ok(productAdapter.getAll());
+    }
 
 }
