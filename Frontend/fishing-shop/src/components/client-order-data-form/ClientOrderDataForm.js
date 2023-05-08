@@ -3,6 +3,8 @@ import { InputText } from "primereact/inputtext";
 import { RadioButton } from "primereact/radiobutton";
 import { Checkbox } from "primereact/checkbox";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Message } from "primereact/message";
 
 const ClientOrderDataForm = () => {
   const [isPrivatePerson, setIsPrivatePerson] = useState(true);
@@ -17,38 +19,44 @@ const ClientOrderDataForm = () => {
   const [statuteAccepted, setStatueAccepted] = useState(false);
   const [emailNewsletter, setEmailNewsletter] = useState(false);
   const [smsNewsletter, setSmsNewsletter] = useState(false);
+  const products = useSelector((state) => state.products);
+  const uuid = useSelector((state) => state.uuid);
+  if (uuid === "" || uuid === undefined) {
+    return (
+      <div>
+        <Message
+          severity="warn"
+          text="Nie wygenerowano unikalnego kodu zamówienia. Spróbuj złożyć zamówienie ponownie później"
+        />
+      </div>
+    );
+  }
 
-  const [validationErrors, setValidationErrors] = useState({
-    nameError: false,
-    lastNameError: false,
-    addressError: false,
-    postalCodeError: false,
-    phoneNumberError: false,
-    cityError: false,
-    emailError: false,
-    countryError: false,
-    statuteError: false,
-  });
+  const createCustomerOrder = () => {
+    const customer = gatherUserDataToObject();
+    const order = {
+      customer: customer,
+      uuid: uuid,
+      products: products,
+    };
+    console.log(order);
+  };
 
-  const validateForm = () => {
-    if (name.length === 0) {
-      setValidationErrors({
-        ...validationErrors,
-        nameError: true,
-      });
-    }
-    if (lastName.length === 0) {
-      setValidationErrors({
-        ...validationErrors,
-        lastNameError: true,
-      });
-    }
-    if (address.length === 0) {
-      setValidationErrors({
-        ...validationErrors,
-        addressError: true,
-      });
-    }
+  const gatherUserDataToObject = () => {
+    return {
+      isPrivatePerson: isPrivatePerson,
+      name: name,
+      lastName: lastName,
+      address: address,
+      postalCode: postalCode,
+      phoneNumber: phoneNumber,
+      city: city,
+      email: email,
+      country: country,
+      statuteAccepted: statuteAccepted,
+      emailNewsletter: emailNewsletter,
+      smsNewsletter: smsNewsletter,
+    };
   };
 
   return (
@@ -56,7 +64,7 @@ const ClientOrderDataForm = () => {
       <div className="client-order-data-form-header">
         <div className="client-order-data-form-header-label">Twoje dane</div>
       </div>
-      <form className="formik-container" onSubmit={{ validateForm }}>
+      <form className="formik-container" onSubmit={() => createCustomerOrder()}>
         <div className="client-order-data-inputs-container">
           <div className="client-order-data-input-row">
             <RadioButton

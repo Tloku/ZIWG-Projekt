@@ -29,18 +29,23 @@ function App() {
             element={<ProductListPage />}
           ></Route>
           <Route path="/cart" element={<CartPage />}></Route>
-          <Route path="/order-finalization" element={<OrderPage />}></Route>
+          <Route
+            path="/order-finalization/:uuid"
+            element={<OrderPage />}
+          ></Route>
           <Route
             path="/product-details/:id"
             element={<ProduuctDetailsPage />}
           ></Route>
-          <Route path="/user-profil" element={<UserProfilePage/>}></Route>
-          <Route path="/products" element={<ProductCategoryPage/>}></Route>
-          <Route path="/help" element={<HelpPage/>}> </Route>
-          <Route path="/news" element={<NewsPage/>}> </Route>
-          <Route path="*"
-            element={<NotFound/>}
-          ></Route>
+          <Route path="/user-profil" element={<UserProfilePage />}></Route>
+          <Route path="/products" element={<ProductCategoryPage />}></Route>
+          <Route path="/help" element={<HelpPage />}>
+            {" "}
+          </Route>
+          <Route path="/news" element={<NewsPage />}>
+            {" "}
+          </Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>
       <div className="footer"></div>
