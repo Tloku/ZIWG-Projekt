@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./constructor.css";
+import "./fishingRodCreator.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
@@ -10,7 +10,7 @@ import kolowrotka from "../../assets/kolowrotka.png";
 import linka from "../../assets/linka.png";
 import splawik from "../../assets/splawik.png";
 import wedka from "../../assets/wedka.png";
-function Constructor() {
+function FishingRodCreator() {
   const [wedkaClicked, setWedkaClicked] = useState("hidden");
 
   const addWedka = (name) => {
@@ -108,33 +108,8 @@ function Constructor() {
           </div>
         </div>
       </div>
-      {/* <div className="Box">
-        <div className="LeftBlock">
-          <div className="VerticalMenu">{}</div>
-        </div>
-        <div className="CenterBlock">
-          <div className="ComponentImage">{}</div>
-        </div>
-        <div className="RightBlock">
-          <div className="RightBlockInside">
-            <div className="VertMenu">{}</div>
-            <div className="RightBlockInfo">
-              <p className="InfoTitle">
-                Total Price: $ {}
-              </p>
-              <div className="InfoButtonWraper">
-                <button
-                  className="InfoPriceButton"
-                >
-                  Create
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
 
-export default Constructor;
+export default FishingRodCreator;
