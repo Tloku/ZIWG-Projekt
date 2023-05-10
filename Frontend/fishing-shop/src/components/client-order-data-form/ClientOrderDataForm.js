@@ -2,9 +2,10 @@ import "../client-order-data-form/ClientOrderDataForm.css";
 import { InputText } from "primereact/inputtext";
 import { RadioButton } from "primereact/radiobutton";
 import { Checkbox } from "primereact/checkbox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Message } from "primereact/message";
+import OrderUUIDNotUniqueMessage from "../messages/OrderUUIDNotUniqueMessage";
+import axios from "axios";
 
 const ClientOrderDataForm = () => {
   const [isPrivatePerson, setIsPrivatePerson] = useState(true);
@@ -21,26 +22,23 @@ const ClientOrderDataForm = () => {
   const [smsNewsletter, setSmsNewsletter] = useState(false);
   const products = useSelector((state) => state.products);
   const uuid = useSelector((state) => state.uuid);
-  if (uuid === "" || uuid === undefined) {
-    return (
-      <div>
-        <Message
-          severity="warn"
-          text="Nie wygenerowano unikalnego kodu zamówienia. Spróbuj złożyć zamówienie ponownie później"
-        />
-      </div>
-    );
-  }
+  const [order, setOrder] = useState(null);
 
   const createCustomerOrder = () => {
     const customer = gatherUserDataToObject();
-    const order = {
+    setOrder({
       customer: customer,
       uuid: uuid,
       products: products,
-    };
-    console.log(order);
+    });
   };
+
+  useEffect(() => {
+    if (order === null) {
+      return;
+    }
+    callCreateCustomerOrder(order);
+  }, [order]);
 
   const gatherUserDataToObject = () => {
     return {
@@ -59,12 +57,15 @@ const ClientOrderDataForm = () => {
     };
   };
 
+  if (uuid === "" || uuid === undefined) {
+    return <OrderUUIDNotUniqueMessage />;
+  }
   return (
     <div className="client-order-data-form-container">
       <div className="client-order-data-form-header">
         <div className="client-order-data-form-header-label">Twoje dane</div>
       </div>
-      <form className="formik-container" onSubmit={() => createCustomerOrder()}>
+      <form className="formik-container">
         <div className="client-order-data-inputs-container">
           <div className="client-order-data-input-row">
             <RadioButton
@@ -204,7 +205,11 @@ const ClientOrderDataForm = () => {
             </label>
           </div>
 
-          <button className="client-order-button" type="submit">
+          <button
+            className="client-order-button"
+            type="button"
+            onClick={() => createCustomerOrder()}
+          >
             Złóż zamówienie
           </button>
         </div>
@@ -214,3 +219,25 @@ const ClientOrderDataForm = () => {
 };
 
 export default ClientOrderDataForm;
+
+const callCreateCustomerOrder = (CreateCustomerOrderRequest) => {
+  let data, error, loaded;
+  const url = "http://localhost:8081/api/customer_order/create";
+
+  try {
+    const response = axios.post(url, CreateCustomerOrderRequest, {
+      config: {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    });
+
+    data = response.data;
+  } catch (error) {
+    error = error.message;
+  } finally {
+    loaded = true;
+  }
+  return { data, error, loaded };
+};

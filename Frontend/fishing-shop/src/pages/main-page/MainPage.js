@@ -6,7 +6,7 @@ import BestSeller from "../../components/bestSellser/BestSeller";
 import Topics from "../../components/topics/Topics";
 
 function MainPage() {
-  let price = "2137.00zł";
+  let price = "2137.00";
 
   return (
     <div>
@@ -25,7 +25,6 @@ function MainPage() {
       <div>
         <Topics />
       </div>
-      
     </div>
   );
 }

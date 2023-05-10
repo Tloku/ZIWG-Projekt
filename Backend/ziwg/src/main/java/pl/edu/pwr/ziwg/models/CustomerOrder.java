@@ -10,6 +10,8 @@ public class CustomerOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String uuid;
     private LocalDate orderDate;
     private String price;
     private String additionalInfo;
@@ -18,15 +20,24 @@ public class CustomerOrder {
     @JoinColumn(name = "Customerid")
     private Customer customer;
 
-    public CustomerOrder(Long id, LocalDate orderDate, String price, String additionalInfo, Customer customer) {
+    public CustomerOrder(Long id, LocalDate orderDate, String uuid, String price, String additionalInfo, Customer customer) {
         this.id = id;
         this.orderDate = orderDate;
+        this.uuid = uuid;
         this.price = price;
         this.additionalInfo = additionalInfo;
         this.customer = customer;
     }
 
     public CustomerOrder() {}
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public Long getId() {
         return id;

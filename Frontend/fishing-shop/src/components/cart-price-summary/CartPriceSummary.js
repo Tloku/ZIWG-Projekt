@@ -27,6 +27,11 @@ const CartPriceSummary = ({ products }) => {
 
   const navigateToOrderFinalization = () => {
     if (products.length === 0) {
+      showMessage(
+        "warn",
+        "Pusty koszyk",
+        "Dodaj produkt do koszyka, by móc kontynuować"
+      );
       return;
     }
     const uuid = generateUUID();
@@ -42,18 +47,18 @@ const CartPriceSummary = ({ products }) => {
     return uuid;
   };
 
-  const showBottomLeft = () => {
+  const showMessage = (severity, summary, detail) => {
     toast.current.show({
-      severity: "warn",
-      summary: "Warn Message",
-      detail: "Dodaj produkt do koszyka, ",
+      severity: severity,
+      summary: summary,
+      detail: detail,
       life: 3000,
     });
   };
 
   return (
     <div className="cart-price-summary-container">
-      <Toast ref={toast} />
+      <Toast ref={toast} position="top-center" />
       <div className="cart-summary-title">Podsumowanie</div>
       <div className="cart-price-info">
         <div className="cart-price-row">

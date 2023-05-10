@@ -23,7 +23,7 @@ class CustomerMediator implements CustomerAdapter {
     @Override
     @Transactional
     public Customer validateAndUpdateCustomer(CreateCustomerOrderRequest request) throws CustomerNotFoundException {
-        Optional<Customer> maybeCustomer = customerRepository.findCustomerByEmailIgnoreCase(request.getEmail());
+        Optional<Customer> maybeCustomer = customerRepository.findCustomerByEmailIgnoreCase(request.getCustomerData().getEmail());
 
         if (maybeCustomer.isEmpty()) {
             throw new CustomerNotFoundException();
