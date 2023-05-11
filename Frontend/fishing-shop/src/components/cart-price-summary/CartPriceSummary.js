@@ -71,7 +71,9 @@ const CartPriceSummary = ({ products }) => {
         </div>
         <div className="cart-price-row">
           <div className="cart-summary-amount-label">Łącznie:</div>
-          <div className="cart-summary-amount">{wholePrice + shippment}</div>
+          <div className="cart-summary-amount">
+            {(wholePrice + shippment).toFixed(2)}
+          </div>
         </div>
       </div>
       <div

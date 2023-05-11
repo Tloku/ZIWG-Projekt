@@ -2,10 +2,14 @@ import "../client-order-data-form/ClientOrderDataForm.css";
 import { InputText } from "primereact/inputtext";
 import { RadioButton } from "primereact/radiobutton";
 import { Checkbox } from "primereact/checkbox";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import OrderUUIDNotUniqueMessage from "../messages/OrderUUIDNotUniqueMessage";
 import axios from "axios";
+import { Toast } from "primereact/toast";
+import { removeAllProducts } from "../../stores/ProductReducer";
+import { removeUUID } from "../../stores/CustomerOrderUUIDReducer";
+import { useNavigate } from "react-router-dom";
 
 const ClientOrderDataForm = () => {
   const [isPrivatePerson, setIsPrivatePerson] = useState(true);
@@ -23,6 +27,9 @@ const ClientOrderDataForm = () => {
   const products = useSelector((state) => state.products);
   const uuid = useSelector((state) => state.uuid);
   const [order, setOrder] = useState(null);
+  const toast = useRef(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const createCustomerOrder = () => {
     const customer = gatherUserDataToObject();
@@ -37,7 +44,7 @@ const ClientOrderDataForm = () => {
     if (order === null) {
       return;
     }
-    callCreateCustomerOrder(order);
+    callCreateCustomerOrder(order, toast, dispatch, navigate);
   }, [order]);
 
   const gatherUserDataToObject = () => {
@@ -62,6 +69,7 @@ const ClientOrderDataForm = () => {
   }
   return (
     <div className="client-order-data-form-container">
+      <Toast ref={toast} position="top-center" />
       <div className="client-order-data-form-header">
         <div className="client-order-data-form-header-label">Twoje dane</div>
       </div>
@@ -220,12 +228,17 @@ const ClientOrderDataForm = () => {
 
 export default ClientOrderDataForm;
 
-const callCreateCustomerOrder = (CreateCustomerOrderRequest) => {
+const callCreateCustomerOrder = async (
+  CreateCustomerOrderRequest,
+  toast,
+  dispatch,
+  navigate
+) => {
   let data, error, loaded;
   const url = "http://localhost:8081/api/customer_order/create";
 
   try {
-    const response = axios.post(url, CreateCustomerOrderRequest, {
+    const response = await axios.post(url, CreateCustomerOrderRequest, {
       config: {
         headers: {
           "Content-Type": "application/json",
@@ -234,10 +247,37 @@ const callCreateCustomerOrder = (CreateCustomerOrderRequest) => {
     });
 
     data = response.data;
+    debugger;
+    if (data && data.id) {
+      showMessage(
+        toast,
+        "success",
+        "Twoje zamówienie zostało stworzone!",
+        "Odpręż się, kurier już niedługo wyruszy z twoją paczką"
+      );
+      setTimeout(() => {
+        clearProductsAndUUIDData(dispatch);
+        navigate("/"); //TODO nawigowanie do strony "twoje zamówienia"
+      }, 3500);
+    }
   } catch (error) {
     error = error.message;
   } finally {
     loaded = true;
   }
   return { data, error, loaded };
+};
+
+const showMessage = (toast, severity, summary, detail) => {
+  toast.current.show({
+    severity: severity,
+    summary: summary,
+    detail: detail,
+    life: 3000,
+  });
+};
+
+const clearProductsAndUUIDData = (dispatch) => {
+  dispatch(removeAllProducts());
+  dispatch(removeUUID());
 };

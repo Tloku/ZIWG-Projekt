@@ -15,6 +15,9 @@ public class CreateCustomerOrderRequest {
     @JsonProperty("uuid")
     private String uuid;
 
+    //TODO BRAKUJE TU POLA ADDITIONAL_INFO
+
+
     public CreateCustomerOrderRequest() {
     }
 

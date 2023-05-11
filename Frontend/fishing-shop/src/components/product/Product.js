@@ -9,12 +9,13 @@ const Product = ({ id, name, price, image, dispatch }) => {
         <CompareButton />
       </div>
       <div className="product-content">
-        <Link to="/product-details/:id">
-        <img
-          className="product-img"
-          src={`data:image/jpeg;base64,${image && image.imageData}`}
-          alt={image && image.name}
-        /></Link>
+        <Link className="product-image-link" to="/product-details/:id">
+          <img
+            className="product-img"
+            src={`data:image/jpeg;base64,${image && image.imageData}`}
+            alt={image && image.name}
+          />
+        </Link>
 
         <div className="productInfo">
           <div className="name">{name}</div>

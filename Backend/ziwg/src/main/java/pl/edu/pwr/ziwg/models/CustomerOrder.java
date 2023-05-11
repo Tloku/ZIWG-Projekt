@@ -2,6 +2,7 @@ package pl.edu.pwr.ziwg.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "customer_order")
@@ -16,16 +17,20 @@ public class CustomerOrder {
     private String price;
     private String additionalInfo;
 
+    @OneToMany(mappedBy = "customerOrder")
+    private List<ProductQuantity> productQuantities;
+
     @ManyToOne
     @JoinColumn(name = "Customerid")
     private Customer customer;
 
-    public CustomerOrder(Long id, LocalDate orderDate, String uuid, String price, String additionalInfo, Customer customer) {
+    public CustomerOrder(Long id, LocalDate orderDate, String uuid, String price, String additionalInfo, List<ProductQuantity> productQuantities, Customer customer) {
         this.id = id;
         this.orderDate = orderDate;
         this.uuid = uuid;
         this.price = price;
         this.additionalInfo = additionalInfo;
+        this.productQuantities = productQuantities;
         this.customer = customer;
     }
 
@@ -77,5 +82,13 @@ public class CustomerOrder {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public List<ProductQuantity> getProductQuantities() {
+        return productQuantities;
+    }
+
+    public void setProductQuantities(List<ProductQuantity> productQuantities) {
+        this.productQuantities = productQuantities;
     }
 }
