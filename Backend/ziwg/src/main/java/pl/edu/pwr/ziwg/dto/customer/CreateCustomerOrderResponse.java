@@ -2,17 +2,13 @@ package pl.edu.pwr.ziwg.dto.customer;
 
 public class CreateCustomerOrderResponse {
 
-    private Boolean isCreated;
+    private Long id;
 
-    public CreateCustomerOrderResponse(Boolean isCreated) {
-        this.isCreated = isCreated;
+    public CreateCustomerOrderResponse(Long id) {
+        this.id = id;
     }
 
-    public Boolean getCreated() {
-        return isCreated;
-    }
-
-    public void setCreated(Boolean created) {
-        isCreated = created;
+    public Long getId() {
+        return id;
     }
 }

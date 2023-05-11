@@ -1,5 +1,6 @@
 import { combineReducers, createStore } from "redux";
 import productsReducer from "./ProductReducer";
+import uuidReducer from "./CustomerOrderUUIDReducer";
 import thunk from "redux-thunk";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
@@ -12,6 +13,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   products: productsReducer,
+  uuid: uuidReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

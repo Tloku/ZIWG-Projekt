@@ -1,5 +1,7 @@
 package pl.edu.pwr.ziwg.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,6 +22,11 @@ public class Customer {
     private String name;
     private String lastName;
 
+    private Boolean statute;
+
+    private Boolean emailNewsletter;
+
+    private Boolean smsNewsletter;
     @OneToMany(mappedBy = "customer")
     private List<CustomerOrder> customerOrders;
 
@@ -126,4 +133,37 @@ public class Customer {
     public void setOrders(List<CustomerOrder> customerOrders) {
         this.customerOrders = customerOrders;
     }
+
+    public Boolean getStatute() {
+        return statute;
+    }
+
+    public void setStatute(Boolean statute) {
+        this.statute = statute;
+    }
+
+    public Boolean getEmailNewsletter() {
+        return emailNewsletter;
+    }
+
+    public void setEmailNewsletter(Boolean emailNewsletter) {
+        this.emailNewsletter = emailNewsletter;
+    }
+
+    public Boolean getSmsNewsletter() {
+        return smsNewsletter;
+    }
+
+    public void setSmsNewsletter(Boolean smsNewsletter) {
+        this.smsNewsletter = smsNewsletter;
+    }
+
+    public List<CustomerOrder> getCustomerOrders() {
+        return customerOrders;
+    }
+
+    public void setCustomerOrders(List<CustomerOrder> customerOrders) {
+        this.customerOrders = customerOrders;
+    }
+
 }

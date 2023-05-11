@@ -1,6 +1,7 @@
 const ADD_PRODUCT = "ADD_PRODUCT";
 const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+const REMOVE_ALL_PRODUCTS = "REMOVE_ALL_PRODUCTS";
 
 export function addProduct(product) {
   return { type: ADD_PRODUCT, product };
@@ -12,6 +13,10 @@ export function removeProduct(product) {
 
 export function updateProduct(product) {
   return { type: UPDATE_PRODUCT, product };
+}
+
+export function removeAllProducts() {
+  return { type: REMOVE_ALL_PRODUCTS };
 }
 
 const initialState = [];
@@ -32,6 +37,8 @@ export default function productsReducer(state = initialState, action) {
       state[productIndex] = action.product;
       return [...state];
     }
+    case REMOVE_ALL_PRODUCTS:
+      return [];
     default:
       return state;
   }

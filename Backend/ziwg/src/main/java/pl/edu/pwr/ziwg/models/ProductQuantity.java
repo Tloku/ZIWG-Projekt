@@ -13,6 +13,8 @@ public class ProductQuantity {
 
     private Integer quantity;
 
+    private String productPriceWhenOrdered;
+
     @ManyToOne
     @JoinColumn(name = "Productid")
     private Product product;
@@ -21,9 +23,10 @@ public class ProductQuantity {
     @JoinColumn(name = "Orderid")
     private CustomerOrder customerOrder;
 
-    public ProductQuantity(Long id, Integer quantity, Product product, CustomerOrder customerOrder) {
+    public ProductQuantity(Long id, Integer quantity, String productPriceWhenOrdered, Product product, CustomerOrder customerOrder) {
         this.id = id;
         this.quantity = quantity;
+        this.productPriceWhenOrdered = productPriceWhenOrdered;
         this.product = product;
         this.customerOrder = customerOrder;
     }
@@ -31,12 +34,16 @@ public class ProductQuantity {
     public ProductQuantity() {
     }
 
-    public Long getId() {
-        return id;
+    public String getProductPriceWhenOrdered() {
+        return productPriceWhenOrdered;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductPriceWhenOrdered(String productPriceWhenOrdered) {
+        this.productPriceWhenOrdered = productPriceWhenOrdered;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Integer getQuantity() {
