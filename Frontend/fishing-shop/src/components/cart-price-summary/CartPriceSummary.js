@@ -1,9 +1,19 @@
 import "../cart-price-summary/cartPriceSummary.css";
-import { Link } from "react-router-dom";import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useRef, useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
+import { saveUUID } from "../../stores/CustomerOrderUUIDReducer";
+import { useSelector } from "react-redux";
+import { Toast } from "primereact/toast";
 
 const CartPriceSummary = ({ products }) => {
+  const toast = useRef(null);
   const shippment = 17;
+  const dispatch = useDispatch();
   const [wholePrice, setWholePrice] = useState(0);
+  const navigate = useNavigate();
+  const oldUUID = useSelector((state) => state.uuid);
 
   useEffect(() => {
     setWholePrice(
@@ -15,8 +25,40 @@ const CartPriceSummary = ({ products }) => {
     );
   }, [products]);
 
+  const navigateToOrderFinalization = () => {
+    if (products.length === 0) {
+      showMessage(
+        "warn",
+        "Pusty koszyk",
+        "Dodaj produkt do koszyka, by móc kontynuować"
+      );
+      return;
+    }
+    const uuid = generateUUID();
+    navigate("/order-finalization/" + uuid);
+  };
+
+  const generateUUID = () => {
+    if (oldUUID !== "") {
+      return oldUUID;
+    }
+    const uuid = uuidv4();
+    dispatch(saveUUID(uuid));
+    return uuid;
+  };
+
+  const showMessage = (severity, summary, detail) => {
+    toast.current.show({
+      severity: severity,
+      summary: summary,
+      detail: detail,
+      life: 3000,
+    });
+  };
+
   return (
     <div className="cart-price-summary-container">
+      <Toast ref={toast} position="top-center" />
       <div className="cart-summary-title">Podsumowanie</div>
       <div className="cart-price-info">
         <div className="cart-price-row">
@@ -29,12 +71,17 @@ const CartPriceSummary = ({ products }) => {
         </div>
         <div className="cart-price-row">
           <div className="cart-summary-amount-label">Łącznie:</div>
-          <div className="cart-summary-amount">{wholePrice + shippment}</div>
+          <div className="cart-summary-amount">
+            {(wholePrice + shippment).toFixed(2)}
+          </div>
         </div>
       </div>
-      <Link style={{textDecoration: 'none', color: "black"}}  to= "/order-finalization">
-      <div className="go-to-order-page-button">ZAMÓW</div>
-      </Link>
+      <div
+        onClick={() => navigateToOrderFinalization()}
+        className="go-to-order-page-button"
+      >
+        ZAMÓW
+      </div>
     </div>
   );
 };

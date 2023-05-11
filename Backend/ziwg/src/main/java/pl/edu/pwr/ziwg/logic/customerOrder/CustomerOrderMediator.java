@@ -10,21 +10,18 @@ import pl.edu.pwr.ziwg.models.Customer;
 @Component
 class CustomerOrderMediator implements CustomerOrderAdapter {
 
-    private final CustomerOrderRepository customerOrderRepository;
-    private final CustomerOrderTranslator customerOrderTranslator;
+    private final CreateCustomerOrderService createCustomerOrderService;
     private final CustomerAdapter customerAdapter;
 
-    public CustomerOrderMediator(CustomerOrderRepository customerOrderRepository, CustomerOrderTranslator customerOrderTranslator, CustomerAdapter customerAdapter) {
-        this.customerOrderRepository = customerOrderRepository;
-        this.customerOrderTranslator = customerOrderTranslator;
+    public CustomerOrderMediator(CreateCustomerOrderService createCustomerOrderService, CustomerAdapter customerAdapter) {
         this.customerAdapter = customerAdapter;
+        this.createCustomerOrderService = createCustomerOrderService;
     }
 
     @Override
-    public Boolean createCustomerOrder(CreateCustomerOrderRequest request) throws CustomerNotFoundException {
+    public Long createCustomerOrder(CreateCustomerOrderRequest request) throws CustomerNotFoundException {
         Customer customer = customerAdapter.validateAndUpdateCustomer(request);
-
-
-        return null;
+        return createCustomerOrderService.createCustomerOrder(customer, request);
     }
+
 }
