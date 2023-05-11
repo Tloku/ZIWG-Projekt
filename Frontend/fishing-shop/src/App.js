@@ -8,6 +8,7 @@ import MainPage from "./pages/main-page/MainPage";
 import CartPage from "./pages/cart-page/CartPage";
 import OrderPage from "./pages/order-page/OrderPage";
 import ProduuctDetailsPage from "./pages/product-details-page/ProductDetailsPage";
+import FishingRodCreator from "./components/fishing-rod-creator/FishingRodCreator";
 import NotFound from "./pages/NotFound";
 import UserProfilePage from "./pages/user-page/UserProfilPage";
 import ProductCategoryPage from "./pages/product-category/ProductCategoryPage";
@@ -29,10 +30,8 @@ function App() {
             element={<ProductListPage />}
           ></Route>
           <Route path="/cart" element={<CartPage />}></Route>
-          <Route
-            path="/order-finalization/:uuid"
-            element={<OrderPage />}
-          ></Route>
+          <Route path="/order-finalization/:uuid" element={<OrderPage />}></Route>
+          <Route path="/fishing-rod-creator" element={<FishingRodCreator />}></Route>
           <Route
             path="/product-details/:id"
             element={<ProduuctDetailsPage />}
