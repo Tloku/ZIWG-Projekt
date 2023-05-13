@@ -30,8 +30,8 @@ const Navbar = () => {
       <ul>
         <li> <Link to="/" style={{ width: "100%", height: "100%", display: 'inline-block', textDecoration: "none", color: "white" }}>Strona główna</Link>
         </li>
-        <li>
-          <NavDropdown title="Produkt" id="basic-nav-dropdown" style={{ color: "white", margin: "center", position: "relative", textAlign: "center", padding: "relative", display: "block" }} show={open} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+        <li onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+          <NavDropdown title="Produkt" id="basic-nav-dropdown" style={{ color: "white", margin: "center", position: "relative", textAlign: "center", padding: "relative", display: "block" }} show={open} /*onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}*/>
             {categories.map((categories) =>
               <NavDropdown.Item key={categories.id}>
                 <Link to={"products/" + categories.name} style={{ width: "100%", height: "100%", display: 'inline-block', color: "black", textDecoration: "none" }}>
