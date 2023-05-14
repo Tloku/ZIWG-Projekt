@@ -80,3 +80,72 @@ Caused by: org.h2.mvstore.MVStoreException: File is corrupted - unable to recove
 	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
 	at org.h2.mvstore.db.Store.<init>(Store.java:136)
 	... 15 more
+2023-05-14 17:37:09 database: flush
+org.h2.message.DbException: Błąd ogólny: "org.h2.mvstore.MVStoreException: File is corrupted - unable to recover a valid set of chunks [2.1.214/6]"
+General error: "org.h2.mvstore.MVStoreException: File is corrupted - unable to recover a valid set of chunks [2.1.214/6]" [50000-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:395)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:3318)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:593)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:469)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:535)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:516)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Błąd ogólny: "org.h2.mvstore.MVStoreException: File is corrupted - unable to recover a valid set of chunks [2.1.214/6]"
+General error: "org.h2.mvstore.MVStoreException: File is corrupted - unable to recover a valid set of chunks [2.1.214/6]" [50000-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 23 more
+Caused by: org.h2.mvstore.MVStoreException: File is corrupted - unable to recover a valid set of chunks [2.1.214/6]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.MVStore.readStoreHeader(MVStore.java:1038)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:463)
+	... 17 more
+2023-05-14 17:37:09 database: opening D:/Studia/Semestr 8/Zastosowanie informatyki w gospodarce/Projekt/keycloak-21.0.1/data/h2/keycloakdb
+org.h2.message.DbException: Uszkodzenie pliku podczas wczytywania rekordu: "D:/Studia/Semestr 8/Zastosowanie informatyki w gospodarce/Projekt/keycloak-21.0.1/data/h2/keycloakdb.mv.db"
+File corrupted while reading record: "D:/Studia/Semestr 8/Zastosowanie informatyki w gospodarce/Projekt/keycloak-21.0.1/data/h2/keycloakdb.mv.db". Possible solution: use the recovery tool [90030-214]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:166)
+	at org.h2.mvstore.db.Store.<init>(Store.java:145)
+	at org.h2.engine.Database.<init>(Database.java:324)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.jdbcx.JdbcDataSource.getXAConnection(JdbcDataSource.java:322)
+	at io.agroal.pool.ConnectionFactory.createConnection(ConnectionFactory.java:232)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:535)
+	at io.agroal.pool.ConnectionPool$CreateConnectionTask.call(ConnectionPool.java:516)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at io.agroal.pool.util.PriorityScheduledExecutor.beforeExecute(PriorityScheduledExecutor.java:75)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Uszkodzenie pliku podczas wczytywania rekordu: "D:/Studia/Semestr 8/Zastosowanie informatyki w gospodarce/Projekt/keycloak-21.0.1/data/h2/keycloakdb.mv.db"
+File corrupted while reading record: "D:/Studia/Semestr 8/Zastosowanie informatyki w gospodarce/Projekt/keycloak-21.0.1/data/h2/keycloakdb.mv.db". Possible solution: use the recovery tool [90030-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:678)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 18 more
+Caused by: org.h2.mvstore.MVStoreException: File is corrupted - unable to recover a valid set of chunks [2.1.214/6]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
+	at org.h2.mvstore.MVStore.readStoreHeader(MVStore.java:1038)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:463)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:4082)
+	at org.h2.mvstore.db.Store.<init>(Store.java:136)
+	... 15 more

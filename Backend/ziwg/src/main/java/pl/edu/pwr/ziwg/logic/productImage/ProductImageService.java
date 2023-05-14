@@ -66,8 +66,6 @@ public class ProductImageService {
 //            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png"
     );
 
-
-
     private final ProductImageRepository productImageRepository;
 
     public ProductImageService(ProductImageRepository productImageRepository) {

@@ -52,7 +52,7 @@ const ProductFilter = ({ category }) => {
       <div className="producent-filter">
         <div className="producent-filter-label">Producent</div>
         {tmpProducent.map((value, index) => (
-          <div className="producent-checkboxes">
+          <div className="checkboxes-view producent-checkboxes">
             <Checkbox
               className="producent-checkbox"
               inputId={index}
@@ -61,14 +61,16 @@ const ProductFilter = ({ category }) => {
               onChange={onProducentChange}
               checked={producent.includes(value)}
             ></Checkbox>
-            <label htmlFor={index}>{value}</label>
+            <label htmlFor={index} className="checkbox-label">
+              {value}
+            </label>
           </div>
         ))}
       </div>
       <div className="border"></div>
       <div className="discount-filter">
         <div className="discount-filter-label">Promocja</div>
-        <div className="discount-checkboxes">
+        <div className="checkboxes-view discount-checkboxes">
           <Checkbox
             className="discount-checkbox"
             inputId="discount"
@@ -111,9 +113,9 @@ const ProductFilter = ({ category }) => {
       </div>
       <div className="border"></div>
       <div className="sections-filter">
-        <div className="sections-filter-label">Producent</div>
+        <div className="sections-filter-label">Ilość sekcji</div>
         {sectionsNumber.map((value, index) => (
-          <div className="sections-checkboxes">
+          <div className="checkboxes-view sections-checkboxes">
             <Checkbox
               className="sections-checkbox"
               inputId={index}

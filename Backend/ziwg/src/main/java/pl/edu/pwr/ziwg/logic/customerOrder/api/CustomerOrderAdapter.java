@@ -6,5 +6,5 @@ import pl.edu.pwr.ziwg.logic.customer.exceptions.CustomerNotFoundException;
 
 @Component
 public interface CustomerOrderAdapter {
-    Boolean createCustomerOrder(CreateCustomerOrderRequest request) throws CustomerNotFoundException;
+    Long createCustomerOrder(CreateCustomerOrderRequest request) throws CustomerNotFoundException;
 }

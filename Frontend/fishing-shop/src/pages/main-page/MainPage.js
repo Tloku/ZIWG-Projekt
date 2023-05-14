@@ -4,9 +4,10 @@ import AdsCarousel from "../../components/adsCarousel/adsCarousel";
 import NewProducts from "../../components/newProducts/NewProducts";
 import BestSeller from "../../components/bestSellser/BestSeller";
 import Topics from "../../components/topics/Topics";
+import { useKeycloak } from "@react-keycloak/web";
 
 function MainPage() {
-  let price = "2137.00zł";
+  let price = "2137.00";
 
   return (
     <div>
@@ -25,7 +26,6 @@ function MainPage() {
       <div>
         <Topics />
       </div>
-      
     </div>
   );
 }

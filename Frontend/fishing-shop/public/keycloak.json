@@ -1,10 +1,8 @@
 {
-  "realm": "fishing-shop-demo-realm",
+  "realm": "react-shop",
   "auth-server-url": "http://localhost:8180/",
   "ssl-required": "external",
-  "resource": "react-web-app",
+  "resource": "react-client",
   "public-client": true,
-  "verify-token-audience": true,
-  "use-resource-role-mappings": true,
   "confidential-port": 0
 }

@@ -99,3 +99,7 @@
 .p-checkbox .p-checkbox-box:hover {
     border-color: #cdba6d !important;   
 }
+
+.checkboxes-view {
+    display: flex;
+}

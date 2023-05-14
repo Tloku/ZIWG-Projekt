@@ -45,6 +45,11 @@
     transition: all .2s ease-in-out;
 }
 
+.product-image-link {
+    display: flex;
+    justify-content: center;
+}
+
 .productInfo {
     margin-top: 2vh;
     display: flex;

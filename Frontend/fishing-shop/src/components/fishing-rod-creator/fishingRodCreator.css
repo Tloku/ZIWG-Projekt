@@ -1,0 +1,168 @@
+.Box {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  height:87vh;
+  flex-direction: row;
+  background-color: #efefef;
+  
+}
+
+.creator-li {
+  list-style-type: none;
+  margin-top: 15px;
+  width: 90%;
+}
+.dropdown-button {
+  background-color: #177f9f;
+  border-color: #177f9f;
+  width: 100%;
+}
+.show {
+} /*musi tak być*/
+
+.dropdown-button:hover {
+  background-color: #177f9f;
+  color: #cdba6d;
+}
+.dropdown-button:focus {
+  background-color: #177f9f;
+  color: #cdba6d;
+}
+.option-list {
+  width: 100%;
+}
+
+#button-tooltip div img {
+  width: 300px;
+}
+.LeftBlock {
+  flex: 25%;
+  align-items: stretch;
+  min-height: 25%;
+  height: 95%;
+
+  margin-inline-start: 1.5em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.category {
+  width: 100%;
+}
+
+.CenterBlock {
+  flex: 35%;
+  align-items: stretch;
+  min-height: 25%;
+  height: 95%;
+  margin-inline-start: 1.5em;
+  margin-inline-end: 1.5em;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  overflow-y: auto;
+  border-radius: 35px;
+  justify-content: center;
+  position: relative;
+}
+
+.CenterBlock_image {
+  width: 100%;
+  border-radius: 35px;
+  position: absolute;
+}
+
+.Wedka {
+  position: absolute;
+  width: 100%;
+  /* visibility: hidden; */
+}
+.Haczek {
+  position: absolute;
+  width: 100%;
+  visibility: hidden;
+}
+.Linka {
+  position: absolute;
+  width: 100%;
+  visibility: hidden;
+}
+.Kolowrotka {
+  position: absolute;
+  width: 100%;
+  visibility: hidden;
+}
+.Splawik {
+  position: absolute;
+  width: 100%;
+  visibility: hidden;
+}
+
+.CenterBlock::-webkit-scrollbar {
+  width: 0 !important;
+}
+.CenterBlock {
+  overflow: -moz-scrollbars-none;
+}
+.CenterBlock {
+  -ms-overflow-style: none;
+}
+
+.RightBlock {
+  flex: 25%;
+
+  min-height: 25%;
+  height: 95%;
+
+  margin-inline-start: 1.5em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  width: 65%;
+  text-align: center;
+  border: 3px solid #0da719;
+  border-radius: 8px;
+  padding-bottom: 5px;
+  transition: background-color 0.3s ease-in;
+  margin: 0;
+  margin-bottom: 1vh;
+}
+
+.RightBlockInfo {
+  margin-block-start: 1em;
+  margin-block-end: 1.1em;
+  text-decoration: none;
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: bold;
+  color: white;
+  font-size: 26px;
+}
+
+@media screen and (max-width: 500px) {
+  .Box {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    height: 100vh;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .Box {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    height: 150vh;
+    flex-direction: column;
+  }
+}

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import pl.edu.pwr.ziwg.dto.product.ProductDisplayInformation;
 import pl.edu.pwr.ziwg.exceptions.NullIdException;
 import pl.edu.pwr.ziwg.logic.category.exceptions.CategoryNullException;
-import pl.edu.pwr.ziwg.models.Category;
 import pl.edu.pwr.ziwg.models.Product;
 
 import java.util.List;
