@@ -8,6 +8,12 @@ import MainPage from "./pages/main-page/MainPage";
 import CartPage from "./pages/cart-page/CartPage";
 import OrderPage from "./pages/order-page/OrderPage";
 import ProduuctDetailsPage from "./pages/product-details-page/ProductDetailsPage";
+import FishingRodCreator from "./components/fishing-rod-creator/FishingRodCreator";
+import NotFound from "./pages/NotFound";
+import UserProfilePage from "./pages/user-page/UserProfilPage";
+import ProductCategoryPage from "./pages/product-category/ProductCategoryPage";
+import HelpPage from "./pages/help-page/HelpPage";
+import NewsPage from "./pages/newsPage/NewsPage";
 
 function App() {
   return (
@@ -24,11 +30,21 @@ function App() {
             element={<ProductListPage />}
           ></Route>
           <Route path="/cart" element={<CartPage />}></Route>
-          <Route path="/order-finalization" element={<OrderPage />}></Route>
+          <Route path="/order-finalization/:uuid" element={<OrderPage />}></Route>
+          <Route path="/fishing-rod-creator" element={<FishingRodCreator />}></Route>
           <Route
             path="/product-details/:id"
             element={<ProduuctDetailsPage />}
           ></Route>
+          <Route path="/user-profil" element={<UserProfilePage />}></Route>
+          <Route path="/products" element={<ProductCategoryPage />}></Route>
+          <Route path="/help" element={<HelpPage />}>
+            {" "}
+          </Route>
+          <Route path="/news" element={<NewsPage />}>
+            {" "}
+          </Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>
       <div className="footer"></div>

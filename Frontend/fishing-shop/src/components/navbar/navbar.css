@@ -10,10 +10,13 @@ nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 nav ul li {
-    text-decoration: none;
+    text-decoration: white;
     text-align: center;
     color: #fff;
     font-size: 15px;
@@ -49,6 +52,8 @@ nav li:active {
     }
 }
 
+
+
 @media screen and (min-width: 1000px) {
     nav ul li {
         font-size: 18px;
@@ -58,3 +63,12 @@ nav li:active {
 }
 
 
+.dropdown-menu {
+    width: 100%;
+    z-index: 1001;
+    
+}
+
+#navbarScrollingDropdown {
+    width: fit-content;
+}

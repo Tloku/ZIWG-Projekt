@@ -2,7 +2,14 @@ import "../client-order-data-form/ClientOrderDataForm.css";
 import { InputText } from "primereact/inputtext";
 import { RadioButton } from "primereact/radiobutton";
 import { Checkbox } from "primereact/checkbox";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import OrderUUIDNotUniqueMessage from "../messages/OrderUUIDNotUniqueMessage";
+import axios from "axios";
+import { Toast } from "primereact/toast";
+import { removeAllProducts } from "../../stores/ProductReducer";
+import { removeUUID } from "../../stores/CustomerOrderUUIDReducer";
+import { useNavigate } from "react-router-dom";
 
 const ClientOrderDataForm = () => {
   const [isPrivatePerson, setIsPrivatePerson] = useState(true);
@@ -17,46 +24,56 @@ const ClientOrderDataForm = () => {
   const [statuteAccepted, setStatueAccepted] = useState(false);
   const [emailNewsletter, setEmailNewsletter] = useState(false);
   const [smsNewsletter, setSmsNewsletter] = useState(false);
+  const products = useSelector((state) => state.products);
+  const uuid = useSelector((state) => state.uuid);
+  const [order, setOrder] = useState(null);
+  const toast = useRef(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [validationErrors, setValidationErrors] = useState({
-    nameError: false,
-    lastNameError: false,
-    addressError: false,
-    postalCodeError: false,
-    phoneNumberError: false,
-    cityError: false,
-    emailError: false,
-    countryError: false,
-    statuteError: false,
-  });
-
-  const validateForm = () => {
-    if (name.length === 0) {
-      setValidationErrors({
-        ...validationErrors,
-        nameError: true,
-      });
-    }
-    if (lastName.length === 0) {
-      setValidationErrors({
-        ...validationErrors,
-        lastNameError: true,
-      });
-    }
-    if (address.length === 0) {
-      setValidationErrors({
-        ...validationErrors,
-        addressError: true,
-      });
-    }
+  const createCustomerOrder = () => {
+    const customer = gatherUserDataToObject();
+    setOrder({
+      customer: customer,
+      uuid: uuid,
+      products: products,
+    });
   };
 
+  useEffect(() => {
+    if (order === null) {
+      return;
+    }
+    callCreateCustomerOrder(order, toast, dispatch, navigate);
+  }, [order]);
+
+  const gatherUserDataToObject = () => {
+    return {
+      isPrivatePerson: isPrivatePerson,
+      name: name,
+      lastName: lastName,
+      address: address,
+      postalCode: postalCode,
+      phoneNumber: phoneNumber,
+      city: city,
+      email: email,
+      country: country,
+      statuteAccepted: statuteAccepted,
+      emailNewsletter: emailNewsletter,
+      smsNewsletter: smsNewsletter,
+    };
+  };
+
+  if (uuid === "" || uuid === undefined) {
+    return <OrderUUIDNotUniqueMessage />;
+  }
   return (
     <div className="client-order-data-form-container">
+      <Toast ref={toast} position="top-center" />
       <div className="client-order-data-form-header">
         <div className="client-order-data-form-header-label">Twoje dane</div>
       </div>
-      <form className="formik-container" onSubmit={{ validateForm }}>
+      <form className="formik-container">
         <div className="client-order-data-inputs-container">
           <div className="client-order-data-input-row">
             <RadioButton
@@ -196,7 +213,11 @@ const ClientOrderDataForm = () => {
             </label>
           </div>
 
-          <button className="client-order-button" type="submit">
+          <button
+            className="client-order-button"
+            type="button"
+            onClick={() => createCustomerOrder()}
+          >
             Złóż zamówienie
           </button>
         </div>
@@ -206,3 +227,57 @@ const ClientOrderDataForm = () => {
 };
 
 export default ClientOrderDataForm;
+
+const callCreateCustomerOrder = async (
+  CreateCustomerOrderRequest,
+  toast,
+  dispatch,
+  navigate
+) => {
+  let data, error, loaded;
+  const url = "http://localhost:8081/api/customer_order/create";
+
+  try {
+    const response = await axios.post(url, CreateCustomerOrderRequest, {
+      config: {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    });
+
+    data = response.data;
+    debugger;
+    if (data && data.id) {
+      showMessage(
+        toast,
+        "success",
+        "Twoje zamówienie zostało stworzone!",
+        "Odpręż się, kurier już niedługo wyruszy z twoją paczką"
+      );
+      setTimeout(() => {
+        clearProductsAndUUIDData(dispatch);
+        navigate("/"); //TODO nawigowanie do strony "twoje zamówienia"
+      }, 3500);
+    }
+  } catch (error) {
+    error = error.message;
+  } finally {
+    loaded = true;
+  }
+  return { data, error, loaded };
+};
+
+const showMessage = (toast, severity, summary, detail) => {
+  toast.current.show({
+    severity: severity,
+    summary: summary,
+    detail: detail,
+    life: 3000,
+  });
+};
+
+const clearProductsAndUUIDData = (dispatch) => {
+  dispatch(removeAllProducts());
+  dispatch(removeUUID());
+};
