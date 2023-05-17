@@ -59,7 +59,7 @@ nav li:active {
     nav ul li {
         font-size: 18px;
         padding: 10px;
-        border-right: 1px solid #816a6a;
+        border-right: 1px solid #6a8172;
     }
 }
 
@@ -98,4 +98,14 @@ nav li:active {
     display: inline-block;
     color: black;
     text-decoration: none;
+}
+
+.login-li {
+    background-color: #a59450;
+}
+
+
+.login-li:hover {
+    background-color: #cdba6d;
+    color: #0e637d;
 }

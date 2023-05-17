@@ -46,13 +46,9 @@ public class ProductController {
         var resp = new GetProductDetailsResponse(product);
         return ResponseEntity.ok(resp);
     }
-<<<<<<< HEAD
 
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAll() {
         return ResponseEntity.ok(productAdapter.getAll());
     }
-
-=======
->>>>>>> 752de965a5b141a0eb87315c3b23a0d173e38768
 }

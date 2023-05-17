@@ -37,6 +37,7 @@ const ProductListPage = ({ category }) => {
                 image={item.image}
                 dispatch={addToCartLocal}
                 key={index}
+                isProductListPage={true}
               />
             );
           })}

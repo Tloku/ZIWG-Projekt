@@ -1,11 +1,11 @@
 import "../navbar/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { NavDropdown, NavLink } from "react-bootstrap";
-import { Dropdown } from "primereact/dropdown";
-import axios from "axios";
+import { useKeycloak } from "@react-keycloak/web";
 
 const Navbar = () => {
+  const { keycloak } = useKeycloak();
   const categories = [
     { id: 1, name: "Woblery" },
     { id: 2, name: "Przynęty" },
@@ -18,9 +18,22 @@ const Navbar = () => {
     { id: 9, name: "Odzież wędkarska" },
     { id: 10, name: "Elektronika wędkarska" },
   ];
-
   const [open, setOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState(null);
+  const navigate = useNavigate();
+
+  const login = async () => {
+    try {
+      await keycloak.login();
+    } catch (error) {
+      console.error("Failed to log in", error);
+    }
+  };
+  console.log(keycloak);
+  const logout = () => {
+    keycloak.logout();
+    navigate("/");
+  };
 
   return (
     <nav>
@@ -65,6 +78,15 @@ const Navbar = () => {
             Pomoc
           </Link>
         </li>
+        {!keycloak.authenticated ? (
+          <li className="login-li" onClick={() => login()}>
+            Zaloguj
+          </li>
+        ) : (
+          <li className="login-li" onClick={() => logout()}>
+            Wyloguj
+          </li>
+        )}
       </ul>
     </nav>
   );

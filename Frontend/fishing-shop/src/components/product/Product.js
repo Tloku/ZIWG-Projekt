@@ -2,12 +2,15 @@ import "../product/product.css";
 import CompareButton from "../compare-button/CompareButton";
 import { Link } from "react-router-dom";
 
-const Product = ({ id, name, price, image, dispatch }) => {
+const Product = ({ id, name, price, image, dispatch, isProductListPage }) => {
   return (
     <div className="product-container">
-      <div className="compare-product-button">
-        <CompareButton />
-      </div>
+      {isProductListPage ? (
+        <div className="compare-product-button">
+          <CompareButton />
+        </div>
+      ) : null}
+
       <div className="product-content">
         <Link className="product-image-link" to="/product-details/:id">
           <img
@@ -16,7 +19,6 @@ const Product = ({ id, name, price, image, dispatch }) => {
             alt={image && image.name}
           />
         </Link>
-
         <div className="productInfo">
           <div className="name">{name}</div>
           <div className="price">{price}</div>

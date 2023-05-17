@@ -4,10 +4,15 @@ import AdsCarousel from "../../components/adsCarousel/adsCarousel";
 import NewProducts from "../../components/newProducts/NewProducts";
 import BestSeller from "../../components/bestSellser/BestSeller";
 import Topics from "../../components/topics/Topics";
-import { useKeycloak } from "@react-keycloak/web";
+import { useDispatch } from "react-redux";
+import { removeUUID } from "../../stores/CustomerOrderUUIDReducer";
 
 function MainPage() {
   let price = "2137.00";
+
+  const dispatch = useDispatch();
+
+  dispatch(removeUUID());
 
   return (
     <div>

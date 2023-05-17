@@ -7,12 +7,11 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import OffCanvasExample from "../../components/login-registration/LoginRegistrationForm";
 import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Searchbar = () => {
   const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const products = useSelector((state) => state.products);
 
   return (
     <div className="searchbar-content">
@@ -27,15 +26,22 @@ const Searchbar = () => {
       </div>
       <Link to="/cart">
         <div className="searchbar-cart-img">
-          <span className="material-symbols-outlined">shopping_cart</span>
+          <span
+            className="material-symbols-outlined"
+            style={{
+              color: products.length !== 0 ? "#3cb865" : null,
+            }}
+          >
+            shopping_cart
+          </span>
         </div>
       </Link>
-      {/* <Link to = "/user-profil"> */}
-      <div className="searchbar-account-img">
-        {/* <span className="material-symbols-outlined">person</span> */}
-        <OffCanvasExample placement="end" />
-      </div>
-      {/* </Link> */}
+      <Link to="/user-profil">
+        <div className="searchbar-account-img">
+          <span className="material-symbols-outlined">person</span>
+          {/* <OffCanvasExample placement="end" ></OffCanvasExample> */}
+        </div>
+      </Link>
       <div className="searchbar-input">
         <span className="p-input-icon-left w-full">
           <i className="search-icon material-symbols-outlined">phishing</i>

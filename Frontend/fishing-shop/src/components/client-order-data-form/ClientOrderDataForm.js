@@ -10,6 +10,7 @@ import { Toast } from "primereact/toast";
 import { removeAllProducts } from "../../stores/ProductReducer";
 import { removeUUID } from "../../stores/CustomerOrderUUIDReducer";
 import { useNavigate } from "react-router-dom";
+import { useKeycloak } from "@react-keycloak/web";
 
 const ClientOrderDataForm = () => {
   const [isPrivatePerson, setIsPrivatePerson] = useState(true);
@@ -30,8 +31,19 @@ const ClientOrderDataForm = () => {
   const toast = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { keycloak } = useKeycloak();
 
   const createCustomerOrder = () => {
+    if (keycloak && !keycloak.authenticated) {
+      showMessage(
+        toast,
+        "error",
+        "Zaloguj się!",
+        "Musisz być zalogowany, żeby móc złożyć zamówienie"
+      );
+      return;
+    }
+
     const customer = gatherUserDataToObject();
     setOrder({
       customer: customer,
@@ -44,7 +56,7 @@ const ClientOrderDataForm = () => {
     if (order === null) {
       return;
     }
-    callCreateCustomerOrder(order, toast, dispatch, navigate);
+    callCreateCustomerOrder(order, toast, dispatch, navigate, keycloak);
   }, [order]);
 
   const gatherUserDataToObject = () => {
@@ -232,22 +244,23 @@ const callCreateCustomerOrder = async (
   CreateCustomerOrderRequest,
   toast,
   dispatch,
-  navigate
+  navigate,
+  keycloak
 ) => {
   let data, error, loaded;
-  const url = "http://localhost:8081/api/customer_order/create";
+  const url = "http://localhost:8081/api/customer_order/authorize/create";
+
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `bearer ${keycloak.token}`,
+  };
 
   try {
     const response = await axios.post(url, CreateCustomerOrderRequest, {
-      config: {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
+      headers,
     });
 
     data = response.data;
-    debugger;
     if (data && data.id) {
       showMessage(
         toast,

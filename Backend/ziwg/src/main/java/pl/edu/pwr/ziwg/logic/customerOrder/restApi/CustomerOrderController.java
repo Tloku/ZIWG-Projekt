@@ -21,7 +21,7 @@ public class CustomerOrderController {
     }
 
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/authorize/create")
     public ResponseEntity<CreateCustomerOrderResponse> createCustomerOrder(@RequestBody CreateCustomerOrderRequest request) throws CreateCustomerOrderRequestNullException, CustomerNotFoundException {
         if (request == null) {
             throw new CreateCustomerOrderRequestNullException();
