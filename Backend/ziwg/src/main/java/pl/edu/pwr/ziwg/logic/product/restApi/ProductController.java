@@ -3,10 +3,7 @@ package pl.edu.pwr.ziwg.logic.product.restApi;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pwr.ziwg.dto.product.GetProductDetailsRequest;
-import pl.edu.pwr.ziwg.dto.product.GetProductDetailsResponse;
-import pl.edu.pwr.ziwg.dto.product.GetProductDisplayInfoRequest;
-import pl.edu.pwr.ziwg.dto.product.GetProductDisplayInfoResponse;
+import pl.edu.pwr.ziwg.dto.product.*;
 import pl.edu.pwr.ziwg.exceptions.NullIdException;
 import pl.edu.pwr.ziwg.logic.category.exceptions.CategoryNullException;
 import pl.edu.pwr.ziwg.logic.product.api.ProductAdapter;
@@ -50,5 +47,15 @@ public class ProductController {
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAll() {
         return ResponseEntity.ok(productAdapter.getAll());
+    }
+
+    @PostMapping(value = "/product/fishing_rod_creator")
+    public ResponseEntity<GetProductFishingRodCreatorResponse> getProductFishingRodCreator(@RequestBody GetProductFishingRodCreatorDataRequest request) throws GetProductRequestNullException, CategoryNullException {
+        if (request == null) {
+            throw new GetProductRequestNullException();
+        }
+        var productsFishingRodCreatorData = productAdapter.getProductFishingRodCreator(request.getCategoryName());
+        var resp = new GetProductFishingRodCreatorResponse(productsFishingRodCreatorData);
+        return ResponseEntity.ok(resp);
     }
 }
