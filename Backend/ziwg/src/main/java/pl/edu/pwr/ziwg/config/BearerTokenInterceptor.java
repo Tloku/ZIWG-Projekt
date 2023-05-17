@@ -1,5 +1,10 @@
 package pl.edu.pwr.ziwg.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nimbusds.jwt.JWT;
+import com.nimbusds.jwt.JWTParser;
+import net.minidev.json.JSONObject;
+import net.minidev.json.JSONValue;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Component;
@@ -18,21 +23,22 @@ public class BearerTokenInterceptor implements HandlerInterceptor {
             HttpServletResponse response,
             Object handler
     ) throws Exception {
+        System.out.println(request.getHeader("Authorization"));
         if (!request.getRequestURI().contains("authorize")) {
-            System.out.println("ELO");
+            System.out.println("===Public API Call===");
             return true;
         }
-
+        System.out.println("===Public API Call===");
         String authorizationHeader = request.getHeader("Authorization");
         if (authorizationHeader == null || !authorizationHeader.startsWith("bearer")) {
             throw new Exception("No JWT token found in request headers");
         }
         String token = authorizationHeader.substring(7);
-        JwtAuthenticationToken jwtToken = new JwtAuthenticationToken(Jwt.withTokenValue(token).build());
-        System.out.println(jwtToken.isAuthenticated());
-        System.out.println(jwtToken.getTokenAttributes());
-
-        return jwtToken.isAuthenticated();
+        JWT jwt = JWTParser.parse(token);
+        var claimsSet = jwt.getJWTClaimsSet();
+        var realmAccess = (JSONObject) JSONValue.parse(new ObjectMapper().writeValueAsString(claimsSet.getClaims().get("realm_access")));
+        var roles = realmAccess.get("roles");
+        return true;
     }
 
 

@@ -249,15 +249,15 @@ const callCreateCustomerOrder = async (
 ) => {
   let data, error, loaded;
   const url = "http://localhost:8081/api/customer_order/authorize/create";
-
+  
   const headers = {
     "Content-Type": "application/json",
-    Authorization: `bearer ${keycloak.token}`,
+    "Authorization": `bearer ${keycloak.token}`,
   };
 
   try {
     const response = await axios.post(url, CreateCustomerOrderRequest, {
-      headers,
+      headers
     });
 
     data = response.data;

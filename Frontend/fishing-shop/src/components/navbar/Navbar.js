@@ -29,7 +29,7 @@ const Navbar = () => {
       console.error("Failed to log in", error);
     }
   };
-  console.log(keycloak);
+
   const logout = () => {
     keycloak.logout();
     navigate("/");
@@ -67,7 +67,6 @@ const Navbar = () => {
             ))}
           </NavDropdown>
         </li>
-        <li>Zamówienia</li>
         <li>
           <Link to="/news" className="link-style">
             Aktualności
@@ -78,6 +77,10 @@ const Navbar = () => {
             Pomoc
           </Link>
         </li>
+        <li>
+          <Link className="link-style">Zamówienia</Link>
+        </li>
+
         {!keycloak.authenticated ? (
           <li className="login-li" onClick={() => login()}>
             Zaloguj
