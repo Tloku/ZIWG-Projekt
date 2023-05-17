@@ -3,6 +3,7 @@ package pl.edu.pwr.ziwg.logic.product;
 
 import org.springframework.stereotype.Component;
 import pl.edu.pwr.ziwg.dto.product.ProductDisplayInformation;
+import pl.edu.pwr.ziwg.dto.product.ProductFishingRodCreatorData;
 import pl.edu.pwr.ziwg.exceptions.NullIdException;
 import pl.edu.pwr.ziwg.logic.category.exceptions.CategoryNullException;
 import pl.edu.pwr.ziwg.logic.product.api.ProductAdapter;
@@ -35,6 +36,15 @@ class ProductMediator implements ProductAdapter {
             throw new NullIdException();
         }
         return productRepository.getProductById(id);
+    }
+
+    @Override
+    public List<ProductFishingRodCreatorData> getProductFishingRodCreator(String categoryName) throws CategoryNullException {
+        if (categoryName == null) {
+            throw new CategoryNullException();
+        }
+        var products = productRepository.getProductsByCategoryName(categoryName);
+        return productTranslator.toFishingRodCreatorData(products);
     }
 
 }
