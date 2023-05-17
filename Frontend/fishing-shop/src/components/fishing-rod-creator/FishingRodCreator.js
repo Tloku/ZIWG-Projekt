@@ -21,27 +21,27 @@ function FishingRodCreator() {
   const [splawikClicked, setSplawikClicked] = useState("hidden");
 
   const { wedki, wedkiError, wedkiLoaded } = useAxiosPost(
-    "http://localhost:8081/api/product/product_display",
+    "http://localhost:8081/api/product/fishing_rod_creator",
     {categoryName: "FISHING_ROD"}
   );
 
   // const { linki, linkiError, linkiLoaded } = useAxiosPost(
-  //   "http://localhost:8081/api/product/product_display",
+  //   "http://localhost:8081/api/product/fishing_rod_creator",
   //   {categoryName: "FISHING_ROD"}
   // );
 
   const { haczki, haczkiError, haczkiLoaded } = useAxiosPost(
-    "http://localhost:8081/api/product/product_display",
+    "http://localhost:8081/api/product/fishing_rod_creator",
     {categoryName: "HOOK"}
   );
 
   const { kolowrotki, kolowrotkiError, kolowrotkiLoaded } = useAxiosPost(
-    "http://localhost:8081/api/product/product_display",
+    "http://localhost:8081/api/product/fishing_rod_creator",
     {categoryName: "REEL"}
   );
 
   const { splawiki, splawikiError, splawikiLoaded } = useAxiosPost(
-    "http://localhost:8081/api/product/product_display",
+    "http://localhost:8081/api/product/fishing_rod_creator",
     {categoryName: "BAIT"}
   );
 
