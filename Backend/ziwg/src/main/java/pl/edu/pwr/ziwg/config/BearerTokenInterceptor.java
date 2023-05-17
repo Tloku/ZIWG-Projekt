@@ -55,7 +55,15 @@ public class BearerTokenInterceptor implements HandlerInterceptor {
         var claimsSet = jwt.getJWTClaimsSet();
         var realmAccess = (JSONObject) JSONValue.parse(new ObjectMapper().writeValueAsString(claimsSet.getClaims().get("realm_access")));
         var rolesObj = realmAccess.get("roles");
-        return parseRolesObjectToList(rolesObj);
+        var roles =  parseRolesObjectToList(rolesObj);
+        removeKeycloakRoles(roles);
+        return roles;
+    }
+
+    private void removeKeycloakRoles(List<String> roles) {
+        roles.remove("default-roles-react-shop");
+        roles.remove("offline_access");
+        roles.remove("uma_authorization");
     }
 
     private List<String> parseRolesObjectToList(Object rolesObj) {

@@ -15,14 +15,14 @@ public class MethodSecurityInterceptor {
 
 
     public static boolean hasAccess(String requestURI, List<String> roles) {
-        var allowedRoles = URIAccessedByRoles.get(requestURI);
+        var allowedRoles = URIAccessedByRoles.get(RequestURIs.getEnumKeyByString(requestURI));
 
         if (allowedRoles == null) {
             throw new NullPointerException("Requested URI is not correct"); //TODO zmienić na konkretną klasę wyjątków
         }
 
         return roles.stream()
-                .anyMatch(allowedRoles::contains);
+                .anyMatch(role -> allowedRoles.contains(Roles.getEnumKeyByString(role)));
     }
 
 

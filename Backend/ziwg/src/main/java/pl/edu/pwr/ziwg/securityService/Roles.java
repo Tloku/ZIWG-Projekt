@@ -16,6 +16,13 @@ public enum Roles {
         return role;
     }
 
+    public static Roles getEnumKeyByString(String code){
+        for(Roles e : Roles.values()){
+            if(e.role.equals(code)) return e;
+        }
+        return null;
+    }
+
     static List<Roles> allRoles() {
         return List.of(USER, ADMIN);
     }

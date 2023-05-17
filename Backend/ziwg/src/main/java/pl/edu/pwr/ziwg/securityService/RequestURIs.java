@@ -13,5 +13,10 @@ public enum RequestURIs {
         return requestURI;
     }
 
-
+    public static RequestURIs getEnumKeyByString(String code){
+        for(RequestURIs e : RequestURIs.values()){
+            if(e.requestURI.equals(code)) return e;
+        }
+        return null;
+    }
 }
