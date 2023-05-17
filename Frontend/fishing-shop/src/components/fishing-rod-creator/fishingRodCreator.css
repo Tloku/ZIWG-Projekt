@@ -78,27 +78,27 @@ li {
 .Wedka {
   position: absolute;
   width: 100%;
-  /* visibility: hidden; */
+  
 }
 .Haczek {
   position: absolute;
   width: 100%;
-  visibility: hidden;
+  
 }
 .Linka {
   position: absolute;
   width: 100%;
-  visibility: hidden;
+  
 }
 .Kolowrotka {
   position: absolute;
   width: 100%;
-  visibility: hidden;
+  
 }
 .Splawik {
   position: absolute;
   width: 100%;
-  visibility: hidden;
+  
 }
 
 .CenterBlock::-webkit-scrollbar {
@@ -146,6 +146,13 @@ li {
   color: white;
   font-size: 26px;
 }
+
+.product-list-page-container {
+  display: flex;
+  width: 100%;
+}
+
+
 
 @media screen and (max-width: 500px) {
   .Box {
