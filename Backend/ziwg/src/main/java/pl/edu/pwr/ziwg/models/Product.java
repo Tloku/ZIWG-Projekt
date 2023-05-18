@@ -1,7 +1,7 @@
 package pl.edu.pwr.ziwg.models;
 
 import javax.persistence.*;
-
+import java.time.LocalDate;
 
 
 @Entity
@@ -37,6 +37,8 @@ public class Product {
     private Integer height;
     private Integer landingNetLengthAfterUnfolding;
 
+    private LocalDate addedDate;
+
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "Imageid")
     private ProductImage productImage;
@@ -45,8 +47,7 @@ public class Product {
     @JoinColumn(name = "Categoryid")
     private Category category;
 
-
-    public Product(Long id, String name, Integer weight, Integer length, Integer width, Integer fullLength, Integer lureMaxWeight, String price, String type, Integer numberOfSections, Boolean isOnDiscount, Float discount, Integer numberOfBearings, String reelRatio, Integer spoolCapacity, Integer lineLength, Integer lineDiameter, Integer lineDurability, String floatType, String hookSize, String hookType, Integer numberOfHooksInPackage, String manufacturer, String baitPurpose, Integer landingNetDepth, Integer height, Integer landingNetLengthAfterUnfolding) {
+    public Product(Long id, String name, Integer weight, Integer length, Integer width, Integer fullLength, Integer lureMaxWeight, String price, String type, Integer numberOfSections, Boolean isOnDiscount, Float discount, Integer numberOfBearings, String reelRatio, Integer spoolCapacity, Integer lineLength, Integer lineDiameter, Integer lineDurability, String floatType, String hookSize, String hookType, Integer numberOfHooksInPackage, String manufacturer, String baitPurpose, Integer landingNetDepth, Integer height, Integer landingNetLengthAfterUnfolding, LocalDate addedDate) {
         this.id = id;
         this.name = name;
         this.weight = weight;
@@ -74,9 +75,18 @@ public class Product {
         this.landingNetDepth = landingNetDepth;
         this.height = height;
         this.landingNetLengthAfterUnfolding = landingNetLengthAfterUnfolding;
+        this.addedDate = addedDate;
     }
 
     public Product() {}
+
+    public LocalDate getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(LocalDate addedDate) {
+        this.addedDate = addedDate;
+    }
 
     public Long getId() {
         return id;

@@ -3,10 +3,7 @@ package pl.edu.pwr.ziwg.logic.product.restApi;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pwr.ziwg.dto.product.GetProductDetailsRequest;
-import pl.edu.pwr.ziwg.dto.product.GetProductDetailsResponse;
-import pl.edu.pwr.ziwg.dto.product.GetProductDisplayInfoRequest;
-import pl.edu.pwr.ziwg.dto.product.GetProductDisplayInfoResponse;
+import pl.edu.pwr.ziwg.dto.product.*;
 import pl.edu.pwr.ziwg.exceptions.NullIdException;
 import pl.edu.pwr.ziwg.logic.category.exceptions.CategoryNullException;
 import pl.edu.pwr.ziwg.logic.product.api.ProductAdapter;
@@ -43,4 +40,14 @@ public class ProductController {
         var resp = new GetProductDetailsResponse(product);
         return ResponseEntity.ok(resp);
     }
+
+    @GetMapping("/newProducts")
+    public ResponseEntity<GetNewProductsResponse> getNewProducts() {
+        var products = productAdapter.getNewProducts();
+        var resp = new GetNewProductsResponse(products);
+        return ResponseEntity.ok(resp);
+    }
+
+
+
 }
