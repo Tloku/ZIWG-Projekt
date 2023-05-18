@@ -10,7 +10,6 @@ const Product = ({ id, name, price, image, dispatch, isProductListPage }) => {
           <CompareButton />
         </div>
       ) : null}
-
       <div className="product-content">
         <Link className="product-image-link" to="/product-details/:id">
           <img

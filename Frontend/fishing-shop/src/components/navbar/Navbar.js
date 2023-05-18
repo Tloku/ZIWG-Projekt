@@ -7,16 +7,11 @@ import { useKeycloak } from "@react-keycloak/web";
 const Navbar = () => {
   const { keycloak } = useKeycloak();
   const categories = [
-    { id: 1, name: "Woblery" },
-    { id: 2, name: "Przynęty" },
-    { id: 3, name: "Haczyki" },
-    { id: 4, name: "Kołowrotki" },
-    { id: 5, name: "Wędki" },
-    { id: 6, name: "Linki i plecionki" },
-    { id: 7, name: "Pudełka i pokrowce" },
-    { id: 8, name: "Akcesoria wędkarskie" },
-    { id: 9, name: "Odzież wędkarska" },
-    { id: 10, name: "Elektronika wędkarska" },
+    { id: 1, name: "Przynęty" },
+    { id: 2, name: "Haczyki" },
+    { id: 3, name: "Kołowrotki" },
+    { id: 4, name: "Wędki" },
+    { id: 5, name: "Linki i plecionki" },
   ];
   const [open, setOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState(null);

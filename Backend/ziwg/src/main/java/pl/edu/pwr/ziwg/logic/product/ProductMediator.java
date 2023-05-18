@@ -9,6 +9,7 @@ import pl.edu.pwr.ziwg.logic.category.exceptions.CategoryNullException;
 import pl.edu.pwr.ziwg.logic.product.api.ProductAdapter;
 import pl.edu.pwr.ziwg.models.Product;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -43,6 +44,11 @@ class ProductMediator implements ProductAdapter {
         return productRepository.findAll();
     }
 
+    public List<ProductDisplayInformation> getNewProducts() {
+        var products = productRepository.getProductsAddedLastWeek(LocalDate.now().minusDays(7));
+        return productTranslator.toDisplayInfo(products);
+    }
+
     public List<ProductFishingRodCreatorData> getProductFishingRodCreator(String categoryName) throws CategoryNullException {
         if (categoryName == null) {
             throw new CategoryNullException();
@@ -50,7 +56,6 @@ class ProductMediator implements ProductAdapter {
         var products = productRepository.getProductsByCategoryName(categoryName);
         return productTranslator.toFishingRodCreatorData(products);
     }
-
 }
 
 

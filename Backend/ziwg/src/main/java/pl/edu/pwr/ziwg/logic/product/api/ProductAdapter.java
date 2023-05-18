@@ -14,6 +14,8 @@ public interface ProductAdapter {
     List<ProductDisplayInformation> getProductsDisplayInfo(String categoryName) throws CategoryNullException;
 
     Product getProductDetails(Long id) throws NullIdException;
+
     List<Product> getAll();
+    List<ProductDisplayInformation> getNewProducts();
     List<ProductFishingRodCreatorData> getProductFishingRodCreator(String categoryName) throws CategoryNullException;
 }

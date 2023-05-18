@@ -48,6 +48,12 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAll() {
         return ResponseEntity.ok(productAdapter.getAll());
     }
+    @GetMapping("/newProducts")
+    public ResponseEntity<GetNewProductsResponse> getNewProducts() {
+        var products = productAdapter.getNewProducts();
+        var resp = new GetNewProductsResponse(products);
+        return ResponseEntity.ok(resp);
+    }
 
     @PostMapping(value = "/product/fishing_rod_creator")
     public ResponseEntity<GetProductFishingRodCreatorResponse> getProductFishingRodCreator(@RequestBody GetProductFishingRodCreatorDataRequest request) throws GetProductRequestNullException, CategoryNullException {
