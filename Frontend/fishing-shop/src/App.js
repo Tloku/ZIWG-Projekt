@@ -14,7 +14,6 @@ import UserProfilePage from "./pages/user-page/UserProfilPage";
 import ProductCategoryPage from "./pages/product-category/ProductCategoryPage";
 import HelpPage from "./pages/help-page/HelpPage";
 import NewsPage from "./pages/newsPage/NewsPage";
-import LoginPage from "./pages/login-page/LoginPage";
 
 function App() {
   return (
@@ -51,7 +50,6 @@ function App() {
           <Route path="/news" element={<NewsPage />}>
             {" "}
           </Route>
-          <Route path="/login" element={<LoginPage />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>

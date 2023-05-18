@@ -12,7 +12,6 @@ import splawik from "../../assets/splawik.png";
 import wedka from "../../assets/wedka.png";
 import useAxiosPost from "../../hooks/useAxiosPost";
 
-
 function FishingRodCreator() {
   const [wedkaClicked, setWedkaClicked] = useState("hidden");
   const [linkaClicked, setLinkaClicked] = useState("hidden");
@@ -22,7 +21,7 @@ function FishingRodCreator() {
 
   const { wedki, wedkiError, wedkiLoaded } = useAxiosPost(
     "http://localhost:8081/api/product/fishing_rod_creator",
-    {categoryName: "FISHING_ROD"}
+    { categoryName: "FISHING_ROD" }
   );
 
   // const { linki, linkiError, linkiLoaded } = useAxiosPost(
@@ -32,19 +31,18 @@ function FishingRodCreator() {
 
   const { haczki, haczkiError, haczkiLoaded } = useAxiosPost(
     "http://localhost:8081/api/product/fishing_rod_creator",
-    {categoryName: "HOOK"}
+    { categoryName: "HOOK" }
   );
 
   const { kolowrotki, kolowrotkiError, kolowrotkiLoaded } = useAxiosPost(
     "http://localhost:8081/api/product/fishing_rod_creator",
-    {categoryName: "REEL"}
+    { categoryName: "REEL" }
   );
 
   const { splawiki, splawikiError, splawikiLoaded } = useAxiosPost(
     "http://localhost:8081/api/product/fishing_rod_creator",
-    {categoryName: "BAIT"}
+    { categoryName: "BAIT" }
   );
-
 
   const addWedka = (name) => {
     setWedkaClicked("visible");
@@ -78,136 +76,156 @@ function FishingRodCreator() {
   );
 
   return (
-<div>
+    <div>
       <div className="Box">
         <div className="LeftBlock">
-            <li>
-              <Dropdown className="category">
-                <Dropdown.Toggle className="dropdown-button">
-                  Wędki
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="option-list">
-                  {wedki && wedki.productsDisplayInformation ? (
-                    wedki.productsDisplayInformation.map((item, index) => {
-                      return (
-                        <OverlayTrigger
-                          placement="right"
-                          delay={{ show: 250, hide: 400 }}
-                          overlay={renderTooltip("image"=item.image, "name"=item.name)}
+          <li>
+            <Dropdown className="category">
+              <Dropdown.Toggle className="dropdown-button">
+                Wędki
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="option-list">
+                {wedki && wedki.productsDisplayInformation ? (
+                  wedki.productsDisplayInformation.map((item, index) => {
+                    return (
+                      <OverlayTrigger
+                        placement="right"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltip({
+                          image: item.image,
+                          name: item.name,
+                        })}
+                      >
+                        <Dropdown.Item
+                          className="option-item"
+                          href="#/action-1"
+                          key={index}
+                          onClick={() => {
+                            addWedka(item.name);
+                          }}
                         >
-                          <Dropdown.Item
-                            className="option-item"
-                            href="#/action-1"
-                            key={index}
-                            onClick={() => {
-                              addWedka(item.name);
-                            }}
-                          >
-                            {item.name}
-                          </Dropdown.Item>
-                        </OverlayTrigger>
-                      );
-                    })
-                  ):(<div className="product-list-page-loading">Ładowanie...</div>)}
-                </Dropdown.Menu>
-              </Dropdown>
-            </li>
+                          {item.name}
+                        </Dropdown.Item>
+                      </OverlayTrigger>
+                    );
+                  })
+                ) : (
+                  <div className="product-list-page-loading">Ładowanie...</div>
+                )}
+              </Dropdown.Menu>
+            </Dropdown>
+          </li>
 
-            <li>
-              <Dropdown className="category">
-                <Dropdown.Toggle className="dropdown-button">
-                  Haczki
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="option-list">
-                  {haczki && haczki.productsDisplayInformation ? (
-                    haczki.productsDisplayInformation.map((item, index) => {
-                      return (
-                        <OverlayTrigger
-                          placement="right"
-                          delay={{ show: 250, hide: 400 }}
-                          overlay={renderTooltip("image"=item.image, "name"=item.name)}
+          <li>
+            <Dropdown className="category">
+              <Dropdown.Toggle className="dropdown-button">
+                Haczki
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="option-list">
+                {haczki && haczki.productsDisplayInformation ? (
+                  haczki.productsDisplayInformation.map((item, index) => {
+                    return (
+                      <OverlayTrigger
+                        placement="right"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltip({
+                          image: item.image,
+                          name: item.name,
+                        })}
+                      >
+                        <Dropdown.Item
+                          className="option-item"
+                          href="#/action-1"
+                          key={index}
+                          onClick={() => {
+                            addHaczek(item.name);
+                          }}
                         >
-                          <Dropdown.Item
-                            className="option-item"
-                            href="#/action-1"
-                            key={index}
-                            onClick={() => {
-                              addHaczek(item.name);
-                            }}
-                          >
-                            {item.name}
-                          </Dropdown.Item>
-                        </OverlayTrigger>
-                      );
-                    })
-                  ):(<div className="product-list-page-loading">Ładowanie...</div>)}
-                </Dropdown.Menu>
-              </Dropdown>
-            </li>
+                          {item.name}
+                        </Dropdown.Item>
+                      </OverlayTrigger>
+                    );
+                  })
+                ) : (
+                  <div className="product-list-page-loading">Ładowanie...</div>
+                )}
+              </Dropdown.Menu>
+            </Dropdown>
+          </li>
 
-            <li>
-              <Dropdown className="category">
-                <Dropdown.Toggle className="dropdown-button">
-                  Kolowrotki
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="option-list">
-                  {kolowrotki && kolowrotki.productsDisplayInformation ? (
-                    kolowrotki.productsDisplayInformation.map((item, index) => {
-                      return (
-                        <OverlayTrigger
-                          placement="right"
-                          delay={{ show: 250, hide: 400 }}
-                          overlay={renderTooltip("image"=item.image, "name"=item.name)}
+          <li>
+            <Dropdown className="category">
+              <Dropdown.Toggle className="dropdown-button">
+                Kolowrotki
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="option-list">
+                {kolowrotki && kolowrotki.productsDisplayInformation ? (
+                  kolowrotki.productsDisplayInformation.map((item, index) => {
+                    return (
+                      <OverlayTrigger
+                        placement="right"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltip({
+                          image: item.image,
+                          name: item.name,
+                        })}
+                      >
+                        <Dropdown.Item
+                          className="option-item"
+                          href="#/action-1"
+                          key={index}
+                          onClick={() => {
+                            addKolowrotka(item.name);
+                          }}
                         >
-                          <Dropdown.Item
-                            className="option-item"
-                            href="#/action-1"
-                            key={index}
-                            onClick={() => {
-                              addKolowrotka(item.name);
-                            }}
-                          >
-                            {item.name}
-                          </Dropdown.Item>
-                        </OverlayTrigger>
-                      );
-                    })
-                  ):(<div className="product-list-page-loading">Ładowanie...</div>)}
-                </Dropdown.Menu>
-              </Dropdown>
-            </li>
+                          {item.name}
+                        </Dropdown.Item>
+                      </OverlayTrigger>
+                    );
+                  })
+                ) : (
+                  <div className="product-list-page-loading">Ładowanie...</div>
+                )}
+              </Dropdown.Menu>
+            </Dropdown>
+          </li>
 
-            <li>
-              <Dropdown className="category">
-                <Dropdown.Toggle className="dropdown-button">
-                  Splawiki
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="option-list">
-                  {splawiki && splawiki.productsDisplayInformation ? (
-                    splawiki.productsDisplayInformation.map((item, index) => {
-                      return (
-                        <OverlayTrigger
-                          placement="right"
-                          delay={{ show: 250, hide: 400 }}
-                          overlay={renderTooltip("image"=item.image, "name"=item.name)}
+          <li>
+            <Dropdown className="category">
+              <Dropdown.Toggle className="dropdown-button">
+                Splawiki
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="option-list">
+                {splawiki && splawiki.productsDisplayInformation ? (
+                  splawiki.productsDisplayInformation.map((item, index) => {
+                    return (
+                      <OverlayTrigger
+                        placement="right"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={renderTooltip({
+                          image: item.image,
+                          name: item.name,
+                        })}
+                      >
+                        <Dropdown.Item
+                          className="option-item"
+                          href="#/action-1"
+                          key={index}
+                          onClick={() => {
+                            addSplawik(item.name);
+                          }}
                         >
-                          <Dropdown.Item
-                            className="option-item"
-                            href="#/action-1"
-                            key={index}
-                            onClick={() => {
-                              addSplawik(item.name);
-                            }}
-                          >
-                            {item.name}
-                          </Dropdown.Item>
-                        </OverlayTrigger>
-                      );
-                    })
-                  ):(<div className="product-list-page-loading">Ładowanie...</div>)}
-                </Dropdown.Menu>
-              </Dropdown>
-            </li>
+                          {item.name}
+                        </Dropdown.Item>
+                      </OverlayTrigger>
+                    );
+                  })
+                ) : (
+                  <div className="product-list-page-loading">Ładowanie...</div>
+                )}
+              </Dropdown.Menu>
+            </Dropdown>
+          </li>
         </div>
         <div className="LeftBlock">
           <li>
@@ -220,7 +238,10 @@ function FishingRodCreator() {
                 <OverlayTrigger
                   placement="right"
                   delay={{ show: 250, hide: 400 }}
-                  overlay={renderTooltip("image"=example_wedka,"name"="Dragon Millenium Okoń")}
+                  overlay={renderTooltip({
+                    image: example_wedka,
+                    name: "Dragon Millenium Okoń",
+                  })}
                 >
                   <Dropdown.Item
                     className="option-item"
@@ -235,7 +256,10 @@ function FishingRodCreator() {
                 <OverlayTrigger
                   placement="right"
                   delay={{ show: 250, hide: 400 }}
-                  overlay={renderTooltip("image"=example_wedka,"name"="Dragon Millenium Szczupak")}
+                  overlay={renderTooltip({
+                    image: example_wedka,
+                    name: "Dragon Millenium Szczupak",
+                  })}
                 >
                   <Dropdown.Item
                     className="option-item"
@@ -250,7 +274,10 @@ function FishingRodCreator() {
                 <OverlayTrigger
                   placement="right"
                   delay={{ show: 250, hide: 400 }}
-                  overlay={renderTooltip("image"=example_wedka,"name"="Jaxon Crocodile Spinning")}
+                  overlay={renderTooltip({
+                    image: example_wedka,
+                    name: "Jaxon Crocodile Spinning",
+                  })}
                 >
                   <Dropdown.Item
                     className="option-item"
@@ -267,16 +294,41 @@ function FishingRodCreator() {
           </li>
         </div>
         <div className="CenterBlock">
-          <img className="CenterBlock_image" src={constructor_image}></img>
+          <img
+            className="CenterBlock_image"
+            src={constructor_image}
+            alt="img"
+          ></img>
           <img
             className="Wedka"
             style={{ visibility: wedkaClicked }}
             src={wedka}
+            alt="img"
           ></img>
-          <img className="Haczek" src={haczek} style={{ visibility: haczekClicked }}></img>
-          <img className="Kolowrotka" src={kolowrotka} style={{ visibility: kolowrotkaClicked }}></img>
-          <img className="Splawik" src={splawik} style={{ visibility: splawikClicked }}></img>
-          <img className="Linka" src={linka} style={{ visibility: linkaClicked }}></img>
+          <img
+            className="Haczek"
+            src={haczek}
+            style={{ visibility: haczekClicked }}
+            alt="img"
+          ></img>
+          <img
+            className="Kolowrotka"
+            src={kolowrotka}
+            style={{ visibility: kolowrotkaClicked }}
+            alt="img"
+          ></img>
+          <img
+            className="Splawik"
+            src={splawik}
+            style={{ visibility: splawikClicked }}
+            alt="img"
+          ></img>
+          <img
+            className="Linka"
+            src={linka}
+            style={{ visibility: linkaClicked }}
+            alt="img"
+          ></img>
         </div>
         <div className="RightBlock">
           <h3>Info</h3>
@@ -287,7 +339,7 @@ function FishingRodCreator() {
         </div>
       </div>
     </div>
-    );
+  );
 }
 
 export default FishingRodCreator;

@@ -24,7 +24,6 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <App />
-        {/* <LoginPage /> */}
       </BrowserRouter>
     </Provider>
   </ReactKeycloakProvider>

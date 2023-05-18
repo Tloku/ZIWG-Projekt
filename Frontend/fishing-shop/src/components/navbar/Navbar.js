@@ -68,6 +68,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
+          <Link to="/fishing-rod-creator" className="link-style">
+            Kreator
+          </Link>
+        </li>
+        <li>
           <Link to="/help" className="link-style">
             Pomoc
           </Link>
