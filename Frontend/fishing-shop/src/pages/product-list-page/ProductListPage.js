@@ -5,11 +5,23 @@ import ShowComparedProductsButton from "../../components/show-compared-products-
 import useAxiosPost from "../../hooks/useAxiosPost";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../stores/ProductReducer";
+import { useParams } from "react-router-dom";
 
-const ProductListPage = ({ category }) => {
+const ProductListPage = () => {
+  const categoryMapper = new Map([
+    ["Przynęty", "BAIT"],
+    ["Haczyki", "HOOK"],
+    ["Kołowrotki", "REEL"],
+    ["Wędki", "FISHING_ROD"],
+    ["Linki i plecionki", "LANDING_NET"],
+  ]);
+
+  const { category } = useParams();
+
   const getProductDisplayInfoRequest = {
-    categoryName: "FISHING_ROD",
+    categoryName: categoryMapper.get(category),
   };
+
   const dispatch = useDispatch();
 
   const { data, error, loaded } = useAxiosPost(
@@ -36,6 +48,7 @@ const ProductListPage = ({ category }) => {
                 price={item.price}
                 image={item.image}
                 dispatch={addToCartLocal}
+                isProductListPage={true}
                 key={index}
               />
             );

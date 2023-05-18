@@ -6,15 +6,11 @@ import BestSeller from "../../components/bestSellser/BestSeller";
 import Topics from "../../components/topics/Topics";
 
 function MainPage() {
-  let price = "2137.00";
 
   return (
     <div>
       <div>
         <BestSeller />
-      </div>
-      <div className="page">
-        <Product price={price} />
       </div>
       <div className="carousel-container">
         <AdsCarousel />

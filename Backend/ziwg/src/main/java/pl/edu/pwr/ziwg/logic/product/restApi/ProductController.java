@@ -41,6 +41,12 @@ public class ProductController {
         return ResponseEntity.ok(resp);
     }
 
+    @GetMapping("/newProducts")
+    public ResponseEntity<GetNewProductsResponse> getNewProducts() {
+        var products = productAdapter.getNewProducts();
+        var resp = new GetNewProductsResponse(products);
+        return ResponseEntity.ok(resp);
+    }
     @PostMapping(value = "/product/fishing_rod_creator")
     public ResponseEntity<GetProductFishingRodCreatorResponse> getProductFishingRodCreator(@RequestBody GetProductFishingRodCreatorDataRequest request) throws GetProductRequestNullException, CategoryNullException {
         if (request == null) {
