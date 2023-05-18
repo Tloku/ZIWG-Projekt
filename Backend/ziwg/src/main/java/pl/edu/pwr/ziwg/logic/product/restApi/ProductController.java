@@ -47,7 +47,13 @@ public class ProductController {
         var resp = new GetNewProductsResponse(products);
         return ResponseEntity.ok(resp);
     }
-
-
-
+    @PostMapping(value = "/product/fishing_rod_creator")
+    public ResponseEntity<GetProductFishingRodCreatorResponse> getProductFishingRodCreator(@RequestBody GetProductFishingRodCreatorDataRequest request) throws GetProductRequestNullException, CategoryNullException {
+        if (request == null) {
+            throw new GetProductRequestNullException();
+        }
+        var productsFishingRodCreatorData = productAdapter.getProductFishingRodCreator(request.getCategoryName());
+        var resp = new GetProductFishingRodCreatorResponse(productsFishingRodCreatorData);
+        return ResponseEntity.ok(resp);
+    }
 }
