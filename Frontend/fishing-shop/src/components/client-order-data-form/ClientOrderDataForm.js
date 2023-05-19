@@ -34,7 +34,6 @@ const ClientOrderDataForm = () => {
   const { keycloak } = useKeycloak();
 
   const createCustomerOrder = () => {
-    debugger;
     if (keycloak && !keycloak.authenticated) {
       showMessage(
         toast,

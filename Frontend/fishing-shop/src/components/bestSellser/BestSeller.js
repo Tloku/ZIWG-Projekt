@@ -21,7 +21,10 @@ function BestSeller() {
 
   return (
     <div>
-      <p className="section-title">Bestsellers</p>
+      {data && data.productsDisplayInformation.length !== 0 ? (
+        <p className="section-title">Bestsellers</p>
+      ) : null}
+
       {data && data.productsDisplayInformation ? (
         <div className="new-products-wrapper">
           {data.productsDisplayInformation.map((item, index) => {
