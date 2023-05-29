@@ -120,7 +120,7 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>7.0.0</version>
 				<configuration>
-					<url>jdbc:postgresql://localhost:5432/postgres</url>
+					<url>jdbc:postgresql://postgres:5432/postgres</url>
 					<user>postgres</user>
 					<password>12345</password>
 				</configuration>
@@ -136,6 +136,11 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
 		</plugins>
 	</build>
 

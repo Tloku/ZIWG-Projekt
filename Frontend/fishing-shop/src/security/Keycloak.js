@@ -1,7 +1,9 @@
 import Keycloak from "keycloak-js";
 
+const keycloakUrl = process.env.KEYCLOAK_URL;
+
 const keycloak = new Keycloak({
-  url: "http://localhost:8180/",
+  url: `${keycloakUrl}/`,
   realm: "react-shop",
   clientId: "react-client",
 });

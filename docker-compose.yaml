@@ -1,0 +1,99 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: dominik
+      POSTGRES_PASSWORD: 12345
+      PGDATA: /data/postgres
+    volumes:
+      - type: volume
+        source: fishing-shop-vol
+        target: /app-database
+    ports:
+      - "8090:5432"
+    networks:
+      - fishing-shop-net
+    restart: unless-stopped
+
+  keycloak:
+    container_name: keycloak
+    image: jboss/keycloak:16.1.1
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: dominik
+      DB_PASSWORD: 12345
+      PROXY_ADDRESS_FORWARDING: "true"
+    ports:
+      - "8180:8080"
+    networks:
+      - fishing-shop-net
+    volumes:
+      - type: volume
+        source: fishing-shop-vol
+        target: /app-keycloak
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - type: volume
+        source: fishing-shop-vol
+        target: /app-pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - fishing-shop-net
+    restart: unless-stopped
+
+  frontend:
+    depends_on:
+      - postgres
+      - keycloak
+    container_name: frontend
+    build: Frontend\fishing-shop
+    command:
+      - npm install
+      - npm start
+    ports:
+      - "3000:3000"
+    networks:
+      - fishing-shop-net
+    volumes:
+      - type: volume
+        source: fishing-shop-vol
+        target: /app-frontend
+
+  backend:
+    depends_on:
+      - postgres
+      - keycloak
+    container_name: backend
+    build: Backend\ziwg
+    # command:
+    #   - java -jar ziwg-0.0.1-SNAPSHOT.jar
+    ports:
+      - "8081:8081"
+    networks:
+      - fishing-shop-net
+    volumes:
+      - type: volume
+        source: fishing-shop-vol
+        target: /app-backend
+
+networks:
+  fishing-shop-net:
+    driver: bridge
+
+volumes:
+  fishing-shop-vol:
+
+

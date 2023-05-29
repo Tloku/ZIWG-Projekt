@@ -11,8 +11,10 @@ import useAxiosGet from "../../hooks/useAxiosGet";
 function BestSeller() {
   const dispatch = useDispatch();
 
+  const backendUrl = process.env.BACKEND_URL;
+
   const { data, error, loaded } = useAxiosGet(
-    "http://localhost:8081/api/product_quantity/bestsellers"
+    `${backendUrl}/api/product_quantity/bestsellers`
   );
 
   const addToCartLocal = (product) => {

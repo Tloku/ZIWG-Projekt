@@ -1,9 +1,5 @@
 package pl.edu.pwr.ziwg.config;
 
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
-import net.minidev.json.parser.JSONParser;
-import net.minidev.json.parser.ParseException;
 import org.keycloak.admin.client.Keycloak;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,10 +8,7 @@ import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import pl.edu.pwr.ziwg.models.Customer;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Configuration

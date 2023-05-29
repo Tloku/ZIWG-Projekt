@@ -1,6 +1,6 @@
 {
   "realm": "react-shop",
-  "auth-server-url": "http://localhost:8180/",
+  "auth-server-url": "http://keycloak:8180/",
   "ssl-required": "external",
   "resource": "react-client",
   "public-client": true,

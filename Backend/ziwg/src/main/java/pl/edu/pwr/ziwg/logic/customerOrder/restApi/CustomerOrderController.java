@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.edu.pwr.ziwg.dto.customer.CreateCustomerOrderRequest;
 import pl.edu.pwr.ziwg.dto.customer.CreateCustomerOrderResponse;
 import pl.edu.pwr.ziwg.logic.customer.exceptions.CustomerNotFoundException;
-import pl.edu.pwr.ziwg.logic.customerOrder.CustomerOrderRepository;
-import pl.edu.pwr.ziwg.logic.customerOrder.CustomerOrderTranslator;
 import pl.edu.pwr.ziwg.logic.customerOrder.api.CustomerOrderAdapter;
 import pl.edu.pwr.ziwg.logic.customerOrder.exceptions.CreateCustomerOrderRequestNullException;
 
