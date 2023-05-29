@@ -78,7 +78,9 @@ public class ProductImageService {
 
     @PostConstruct
     public void addImages() {
-        System.out.println(resourceFolderPath);
+        if (productImageRepository.count() > 0) {
+            return;
+        }
         System.out.println("=======================");
         System.out.println("Add images to database");
         pathNames.forEach(pathName -> {
