@@ -1,5 +1,7 @@
 package pl.edu.pwr.ziwg.logic.productImage;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import pl.edu.pwr.ziwg.models.ProductImage;
 
@@ -12,59 +14,61 @@ import java.util.List;
 
 @Service
 public class ProductImageService {
+    private final String resourceFolderPath = new ClassPathResource("src/main/resources/product-images").getPath();
 
     private final List<String> pathNames = List.of(
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_savage_gear_sgs2_boat_game.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dragon_proGUIDE_X.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_dam_yagi_cast.png",
-//            "D:\\Studia\\Semestr 8\\ZIWG projekt\\Projekt\\ZIWG-Projekt\\Backend\\ziwg\\product-images\\wedka_mikado_bixlite_fast_spin.png"
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_savage_gear_sgs2_boat_game.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png",
+            resourceFolderPath + "\\wedka_dragon_proGUIDE_X.png",
+            resourceFolderPath + "\\wedka_dam_yagi_cast.png",
+            resourceFolderPath + "\\wedka_mikado_bixlite_fast_spin.png"
     );
+
 
     private final ProductImageRepository productImageRepository;
 
@@ -74,6 +78,7 @@ public class ProductImageService {
 
     @PostConstruct
     public void addImages() {
+        System.out.println(resourceFolderPath);
         System.out.println("=======================");
         System.out.println("Add images to database");
         pathNames.forEach(pathName -> {
