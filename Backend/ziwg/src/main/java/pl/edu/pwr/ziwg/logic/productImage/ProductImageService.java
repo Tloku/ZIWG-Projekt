@@ -1,5 +1,8 @@
 package pl.edu.pwr.ziwg.logic.productImage;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import pl.edu.pwr.ziwg.models.ProductImage;
 
@@ -79,11 +82,10 @@ public class ProductImageService {
 
     @PostConstruct
     public void addImages() {
+        System.out.println("-=ADD IMAGES TO DATABASE=-");
         if (productImageRepository.count() > 0) {
             return;
         }
-        System.out.println("=======================");
-        System.out.println("Add images to database");
         getPathNames().forEach(pathName -> {
             try {
                 System.out.println("Adding: " + pathName);
