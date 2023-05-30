@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS customer (
                           PRIMARY KEY (id));
 CREATE TABLE IF NOT EXISTS product_image (
                        id         SERIAL NOT NULL,
-                       name       varchar(255),
+                       name       varchar(255) UNIQUE,
                        image_data bytea,
                        PRIMARY KEY (id));
 CREATE TABLE IF NOT EXISTS customer_order (

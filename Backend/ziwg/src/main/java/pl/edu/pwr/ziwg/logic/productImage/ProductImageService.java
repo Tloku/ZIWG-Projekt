@@ -1,8 +1,5 @@
 package pl.edu.pwr.ziwg.logic.productImage;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import pl.edu.pwr.ziwg.models.ProductImage;
 
@@ -14,66 +11,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductImageService {
-    private List<String> getPathNames() {
-        String path = "product-images";
-        return List.of(
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png"
-        );
-    }
-
     private final ProductImageRepository productImageRepository;
 
     public ProductImageService(ProductImageRepository productImageRepository) {
@@ -81,19 +22,34 @@ public class ProductImageService {
     }
 
     @PostConstruct
-    public void addImages() {
-        System.out.println("-=ADD IMAGES TO DATABASE=-");
-        if (productImageRepository.count() > 0) {
+    public void addImageDataToExistingImages() {
+        System.out.println("-=ADD IMAGES DATA TO DATABASE=-");
+
+        var productImagesWithoutData = getProductImagesWithoutImageData();
+        getProductImagesWithoutImageData().forEach(image -> {
+                System.out.println("Adding: " + image.getName());
+                addImageDataToImage(image);
+        });
+    }
+
+    public void addImageDataToImage(ProductImage image) {
+        var pathName = getPathNameByImageName(image.getName());
+        if (pathName == null) {
             return;
         }
-        getPathNames().forEach(pathName -> {
-            try {
-                System.out.println("Adding: " + pathName);
-                readDataAndSaveImage(pathName);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        var bufferedImage = getImageFromResources(pathName);
+        if (bufferedImage == null) {
+            return;
+        }
+        var imageData = getImageDataFromBufferedImage(bufferedImage);
+        saveImage(image, imageData);
+    }
+
+
+    private List<ProductImage> getProductImagesWithoutImageData() {
+        return productImageRepository.findAll().stream()
+                .filter(image -> image.getImageData() == null)
+                .collect(Collectors.toList());
     }
 
     private BufferedImage getImageFromResources(String pathName) {
@@ -110,28 +66,43 @@ public class ProductImageService {
         return image;
     }
 
-    public void readDataAndSaveImage(String pathName) throws IOException {
-        var image = getImageFromResources(pathName);
-        if (image == null) {
-            return;
-        }
-
+    private byte[] getImageDataFromBufferedImage(BufferedImage bufferedImage) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(image, "png", baos);
-        byte[] imageData = baos.toByteArray();
-        var name = getImageNameFromPath(pathName);
-        saveImage(name, imageData);
+        try {
+            ImageIO.write(bufferedImage, "png", baos);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return baos.toByteArray();
     }
 
-    private String getImageNameFromPath(String pathName) {
-        return pathName.split(Pattern.quote("\\"))[1];
+    private String getPathNameByImageName(String name) {
+        return getPathNames().stream()
+                .filter(path -> path.contains(name))
+                .findFirst()
+                .orElse(null);
     }
 
     @Transactional
-    public void saveImage(String name, byte[] data) {
-        ProductImage productImage = new ProductImage();
-        productImage.setName(name);
-        productImage.setImageData(data);
-        productImageRepository.save(productImage);
+    public void saveImage(ProductImage image, byte[] data) {
+        image.setImageData(data);
+        productImageRepository.save(image);
+    }
+
+    private List<String> getPathNames() {
+        String path = "product-images";
+        return List.of(
+                path + "\\wedka_savage_gear_sgs2_boat_game.png",
+                path + "\\wedka_mikado_bixlite_fast_spin.png",
+                path + "\\wedka_dragon_proGUIDE_X.png",
+                path + "\\wedka_dam_yagi_cast.png",
+                path + "\\wedka_jaxon_red_wind.png",
+                path + "\\wedka_jaxon_grey_stream.png",
+                path + "\\wedka_jaxon_float_academy_tele_travel_mino.png",
+                path + "\\wedka_mikado_bixlite_spin.png",
+                path + "\\wedka_mikado_intro_carp_II.png",
+                path + "\\wedka_mikado_sasori_feeder.png",
+                path + "\\wedka_tenesa_tele_travel_jaxon.png"
+        );
     }
 }
