@@ -1,8 +1,8 @@
-CREATE TABLE category (
+CREATE TABLE IF NOT EXISTS category (
                           id   SERIAL NOT NULL,
                           name varchar(255),
                           PRIMARY KEY (id));
-CREATE TABLE customer (
+CREATE TABLE IF NOT EXISTS customer (
                           id           SERIAL NOT NULL,
                           login        varchar(255) UNIQUE,
                           phone_number varchar(11),
@@ -11,19 +11,19 @@ CREATE TABLE customer (
                           country      varchar(255),
                           address      varchar(255),
                           PRIMARY KEY (id));
-CREATE TABLE product_image (
+CREATE TABLE IF NOT EXISTS product_image (
                        id         SERIAL NOT NULL,
                        name       varchar(255),
                        image_data bytea,
                        PRIMARY KEY (id));
-CREATE TABLE customer_order (
+CREATE TABLE IF NOT EXISTS customer_order (
                          id              SERIAL NOT NULL,
                          order_date       date,
                          price           varchar(255),
                          Customerid      int4 NOT NULL,
                          additional_info varchar(255),
                          PRIMARY KEY (id));
-CREATE TABLE product (
+CREATE TABLE IF NOT EXISTS product (
                          id                                 SERIAL NOT NULL,
                          name                               varchar(255),
                          weight                             int4,
@@ -54,7 +54,7 @@ CREATE TABLE product (
                          Imageid                            int4 NOT NULL,
                          Categoryid                         int4 NOT NULL,
                          PRIMARY KEY (id));
-CREATE TABLE product_quantity (
+CREATE TABLE IF NOT EXISTS product_quantity (
                                   id        SERIAL NOT NULL,
                                   quantity  int4,
                                   Productid int4 NOT NULL,
