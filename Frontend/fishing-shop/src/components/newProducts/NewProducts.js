@@ -13,7 +13,7 @@ function NewProducts() {
   const backendUrl = process.env.BACKEND_URL;
 
   const { data, error, loaded } = useAxiosGet(
-    `${backendUrl}/api/product/newProducts`
+    `http://localhost:8081/api/product/newProducts`
   );
 
   const addToCartLocal = (product) => {
@@ -22,7 +22,10 @@ function NewProducts() {
 
   return (
     <div>
-      <p className="section-title">New Products</p>
+      {data && data.productsDisplayInformation.length !== 0 ? (
+        <p className="section-title">New Products</p>
+      ) : null}
+
       {data && data.productsDisplayInformation ? (
         <div className="new-products-wrapper">
           {data.productsDisplayInformation.map((item, index) => {

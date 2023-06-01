@@ -20,7 +20,7 @@ function FishingRodCreator() {
   const [splawikClicked, setSplawikClicked] = useState("hidden");
 
   const backendUrl = process.env.BACKEND_URL;
-  const url = `${backendUrl}/api/product/fishing_rod_creator`;
+  const url = `http://localhost:8081/api/product/fishing_rod_creator`;
 
   const { wedki, wedkiError, wedkiLoaded } = useAxiosPost(url, {
     categoryName: "FISHING_ROD",

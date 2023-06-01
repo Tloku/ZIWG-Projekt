@@ -250,7 +250,7 @@ const callCreateCustomerOrder = async (
   let data, error, loaded;
   const backendUrl = process.env.BACKEND_URL;
 
-  const url = `${backendUrl}/api/ustomer_order/authorize/create`;
+  const url = `http://localhost:8081/api/customer_order/authorize/create`;
 
   const headers = {
     "Content-Type": "application/json",

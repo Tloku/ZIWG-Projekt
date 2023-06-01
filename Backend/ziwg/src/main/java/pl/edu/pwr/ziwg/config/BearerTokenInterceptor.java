@@ -31,6 +31,7 @@ public class BearerTokenInterceptor implements HandlerInterceptor {
             Object handler
     ) throws Exception {
         var requestURI = request.getRequestURI();
+        System.out.println("=== REQUEST CALL TO URI: " + requestURI + " ===");
         if (!requestURI.contains("authorize")) {
             System.out.println("===Public API Call===");
             return true;

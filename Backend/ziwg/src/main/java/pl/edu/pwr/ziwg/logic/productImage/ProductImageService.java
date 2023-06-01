@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,10 +27,7 @@ public class ProductImageService {
         System.out.println("-=ADD IMAGES DATA TO DATABASE=-");
 
         var productImagesWithoutData = getProductImagesWithoutImageData();
-        getProductImagesWithoutImageData().forEach(image -> {
-                System.out.println("Adding: " + image.getName());
-                addImageDataToImage(image);
-        });
+        productImagesWithoutData.forEach(this::addImageDataToImage);
     }
 
     public void addImageDataToImage(ProductImage image) {
@@ -39,6 +37,7 @@ public class ProductImageService {
         }
         var bufferedImage = getImageFromResources(pathName);
         if (bufferedImage == null) {
+            System.out.println("BUFFERED IMAGE NULL");
             return;
         }
         var imageData = getImageDataFromBufferedImage(bufferedImage);
@@ -47,15 +46,14 @@ public class ProductImageService {
 
 
     private List<ProductImage> getProductImagesWithoutImageData() {
-        return productImageRepository.findAll().stream()
-                .filter(image -> image.getImageData() == null)
-                .collect(Collectors.toList());
+        return productImageRepository.findProductImageByImageDataIsNull();
     }
 
     private BufferedImage getImageFromResources(String pathName) {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(pathName);
+        InputStream inputStream = getClass().getResourceAsStream(pathName);
         BufferedImage image;
         if (inputStream == null) {
+            System.out.println("INPUT STREAM NULL");
             return null;
         }
         try {
@@ -86,23 +84,24 @@ public class ProductImageService {
     @Transactional
     public void saveImage(ProductImage image, byte[] data) {
         image.setImageData(data);
+        System.out.println("Adding image: " + image.getName() + ", data: " +  Arrays.toString(data).substring(0, 10));
         productImageRepository.save(image);
     }
 
     private List<String> getPathNames() {
-        String path = "product-images";
+        String path = "/product-images";
         return List.of(
-                path + "\\wedka_savage_gear_sgs2_boat_game.png",
-                path + "\\wedka_mikado_bixlite_fast_spin.png",
-                path + "\\wedka_dragon_proGUIDE_X.png",
-                path + "\\wedka_dam_yagi_cast.png",
-                path + "\\wedka_jaxon_red_wind.png",
-                path + "\\wedka_jaxon_grey_stream.png",
-                path + "\\wedka_jaxon_float_academy_tele_travel_mino.png",
-                path + "\\wedka_mikado_bixlite_spin.png",
-                path + "\\wedka_mikado_intro_carp_II.png",
-                path + "\\wedka_mikado_sasori_feeder.png",
-                path + "\\wedka_tenesa_tele_travel_jaxon.png"
+                path + "/wedka_savage_gear_sgs2_boat_game.png",
+                path + "/wedka_mikado_bixlite_fast_spin.png",
+                path + "/wedka_dragon_proGUIDE_X.png",
+                path + "/wedka_dam_yagi_cast.png",
+                path + "/wedka_jaxon_red_wind.png",
+                path + "/wedka_jaxon_grey_stream.png",
+                path + "/wedka_jaxon_float_academy_tele_travel_mino.png",
+                path + "/wedka_mikado_bixlite_spin.png",
+                path + "/wedka_mikado_intro_carp_II.png",
+                path + "/wedka_mikado_sasori_feeder.png",
+                path + "/wedka_tenesa_tele_travel_jaxon.png"
         );
     }
 }

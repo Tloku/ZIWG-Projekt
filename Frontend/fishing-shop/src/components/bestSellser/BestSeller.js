@@ -14,7 +14,7 @@ function BestSeller() {
   const backendUrl = process.env.BACKEND_URL;
 
   const { data, error, loaded } = useAxiosGet(
-    `${backendUrl}/api/product_quantity/bestsellers`
+    `http://localhost:8081/api/product_quantity/bestsellers`
   );
 
   const addToCartLocal = (product) => {

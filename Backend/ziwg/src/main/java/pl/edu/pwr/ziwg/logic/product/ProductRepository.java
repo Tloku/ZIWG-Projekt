@@ -18,6 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Product getProductById(Long id);
 
     @Query("SELECT p FROM Product p WHERE p.addedDate > :weekAgo")
-    List<Product> getProductsAddedLastWeek(LocalDate weekAgo);
+    List<Product> getProductsAddedLastWeek(@Param("weekAgo") LocalDate weekAgo);
 }
 

@@ -30,15 +30,6 @@ function OffCanvasExample({ name, ...props }) {
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = async (event) => {
-    // const form = event.currentTarget;
-    // console.log(event.target);
-    // if (form.checkValidity() === false) {
-    // event.preventDefault();
-    // event.stopPropagation();
-    // }
-
-    // setValidated(true);
-
     try {
       await keycloak.login();
     } catch (error) {

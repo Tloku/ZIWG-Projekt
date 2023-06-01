@@ -27,7 +27,7 @@ const ProductListPage = () => {
   const backendUrl = process.env.BACKEND_URL;
 
   const { data, error, loaded } = useAxiosPost(
-    `${backendUrl}/api/product/product_display`,
+    `http://localhost:8081/api/product/product_display`,
     getProductDisplayInfoRequest
   );
 
