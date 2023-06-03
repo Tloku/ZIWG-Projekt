@@ -1,0 +1,28 @@
+
+
+stages:
+  - build
+  # - test
+  # - docker
+  # - deploy
+
+
+"Build Backend":
+  stage: build
+  script:
+    - cd Backend\ziwg
+    - mvn clean
+    - mvn validate
+    - mvn compile
+    - mvn package
+
+
+
+"Build Frontend":
+  stage: build
+  script: 
+    - cd Frontend\fishing-shop
+    - npm run build
+    - npm install
+
+
